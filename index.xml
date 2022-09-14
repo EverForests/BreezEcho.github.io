@@ -1,4 +1,23 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>BreezEcho's Blog</title><link>https://breezecho.github.io/</link><description>Hugo theme - LoveIt</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>l1477319644@163.com (BreezEcho)</managingEditor><webMaster>l1477319644@163.com (BreezEcho)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 13 Sep 2022 01:35:51 +0800</lastBuildDate><atom:link href="https://breezecho.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Theme Documentation - Basics</title><link>https://breezecho.github.io/theme-documentation-basics/</link><pubDate>Fri, 06 Mar 2020 21:29:01 +0800</pubDate><author>Dillon</author><guid>https://breezecho.github.io/theme-documentation-basics/</guid><description>&lt;p>Discover what the Hugo - &lt;strong>LoveIt&lt;/strong> theme is all about and the core-concepts behind it.&lt;/p></description></item><item><title>BlogStory</title><link>https://breezecho.github.io/blogstory/</link><pubDate>Tue, 13 Sep 2022 01:35:51 +0800</pubDate><author>BreezEcho</author><guid>https://breezecho.github.io/blogstory/</guid><description>1. 本地配置 1.1 git相关资源下载 下载git
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>BreezEcho's Blog</title><link>https://breezecho.github.io/</link><description>Hugo theme - LoveIt</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>l1477319644@163.com (BreezEcho)</managingEditor><webMaster>l1477319644@163.com (BreezEcho)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 13 Sep 2022 21:08:48 +0800</lastBuildDate><atom:link href="https://breezecho.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Theme Documentation - Basics</title><link>https://breezecho.github.io/theme-documentation-basics/</link><pubDate>Fri, 06 Mar 2020 21:29:01 +0800</pubDate><author>Dillon</author><guid>https://breezecho.github.io/theme-documentation-basics/</guid><description>&lt;p>Discover what the Hugo - &lt;strong>LoveIt&lt;/strong> theme is all about and the core-concepts behind it.&lt;/p></description></item><item><title>My Blog Story</title><link>https://breezecho.github.io/bg/</link><pubDate>Tue, 13 Sep 2022 21:08:48 +0800</pubDate><author>BreezEcho</author><guid>https://breezecho.github.io/bg/</guid><description>1. 本地配置 1.1 git相关资源下载 下载git
+安装相关包管理器，例如npm和yum，包管理器中含有某些博客主题需要的依赖
+设置git账号：global、local
+1.2 hugo下载 上官方网站进行下载，详情请见hugo release，注意下载hugo-extended版，适配性更强。
+下载完毕后，将文件路径/bin加入环境变量，重启电脑，打开命令行输入命令hugo version，若产生hugo版本号则证明安装完成。
+1.3 博客的配置 主流的个人博客搭建引擎包括hexo和hugo，这两个文件的主要差别在于主题配置的读取上，hexo博客根目录下的config.yaml文件比theme主题内置的config.yaml文件优先级更低，如果在根目录配置下指明了主题文件信息，那么引擎就会优先渲染后者；hugo与此相反，更侧重于主题文件的更新维护，所以一般需要将主题文件的配置拷贝到根目录下。具体的差异可以参考hexo与hugo的异同。
+我的博客用的是hugo-lovelt主题，主题配置参考lovelt官方文档即可，根目录主题配置记得参照主题文档examplesite下的.conf文件。
+在博客的主题的选择上，我踩了很多坑，一些主题文档的维护相当不好。在选择一款喜欢的主题时，一定要关注官方文档的质量哦。
+2. 云服务器配置 2.1 云主机购买与配置 云主机的选择：阿里云、腾讯云、华为云，这三款是主流。
+关于云主机的购买，具体可参考acwing-linux相关课程：
+云服务器的购买
+云主机的配置：
+我购买的是腾讯云的轻量级服务器，系统为linux下的ubuntu。在系统分配好云主机后，我们的初始化登录是一个叫ubuntu的账户。与一般的云服务器不同，腾讯云初始化没有root用户，但ubuntu拥有sudo权限。注意sudo权限与root权限有一定差异。具体的差异详见sudo与root。
+然后我们可以进行的一些操作：
+2.1.1 创建acs用户 建立：
+1 2 3 # ubuntu根目录~下 adduser acs # 创建用户acs usermod -aG sudo acs # 给用户acs分配sudo权限 查看是否成功：
+注意当我们cd acs或ubuntu时会进入到它们的根目录，但这个电脑下的系统设置文件在/下，也就是说，我们需要cd /才能看到到这台主机下的所有配置文件。同时，我们之后下载的很多文件都会被保存在/etc中。
+2.1.2 安装tmux和docker tmux安装教程
+1 2 sudo apt-get update # linux从服务器获取软件更新情况 sudo apt-get install tmux 在安装完成后，可以通过scp将一些tmux配置文件上传至云端，启用tmux，然后在命令行进行些许配置即可完成对tmux的美化。
+1 2 3 tmux # ctrl + b : 进入tmux命令行模式 source-file ~/.</description></item><item><title>BlogStory</title><link>https://breezecho.github.io/blogstory/</link><pubDate>Tue, 13 Sep 2022 01:35:51 +0800</pubDate><author>BreezEcho</author><guid>https://breezecho.github.io/blogstory/</guid><description>1. 本地配置 1.1 git相关资源下载 下载git
 安装相关包管理器，例如npm和yum，包管理器中含有某些博客主题需要的依赖
 设置git账号：global、local
 1.2 hugo下载 上官方网站进行下载，详情请见hugo release，注意下载hugo-extended版，适配性更强。
