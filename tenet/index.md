@@ -23,17 +23,13 @@
 
 > 原点需要时刻铭记~
 
-
-
 ## 2. 架构
 
-![image-20221003213331924](https://raw.githubusercontent.com/BreezEcho/PicGo/master/image-20221003213331924.png?token=A25IUIYT6L4RKLX3UCUFEQ3DHLS4C)
+![image-20221003215947308](https://raw.githubusercontent.com/BreezEcho/PicGo/master/image-20221003215947308.png)
 
 > 具体的tenet详细概念参考tenet_echo~
 
-
-
 ## 3. 位置
 
-<img src="https://raw.githubusercontent.com/BreezEcho/PicGo/master/image-20221003213824068.png?token=A25IUI36Q3BQBXSLH2USMLTDHLTA4" alt="image-20221003213824068" style="zoom: 50%;" />
+![image-20221003213824068.png](https://github.com/BreezEcho/PicGo/blob/master/image-20221003213824068.png?raw=true)
 
