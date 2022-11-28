@@ -1,4 +1,4 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>All Posts - BreezEcho's Blog</title><link>https://breezecho.github.io/posts/</link><description>All Posts | BreezEcho's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>l1477319644@163.com (BreezEcho)</managingEditor><webMaster>l1477319644@163.com (BreezEcho)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Oct 2022 22:00:00 +0800</lastBuildDate><atom:link href="https://breezecho.github.io/posts/" rel="self" type="application/rss+xml"/><item><title>16级学长的保研历程：从上大到清华</title><link>https://breezecho.github.io/16-%E5%8D%A2%E5%98%89%E8%BD%A9-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF-%E4%BF%9D%E7%A0%94-%E6%B8%85%E5%8D%8E/</link><pubDate>Sun, 30 Oct 2022 22:00:00 +0800</pubDate><author>卢嘉轩</author><guid>https://breezecho.github.io/16-%E5%8D%A2%E5%98%89%E8%BD%A9-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF-%E4%BF%9D%E7%A0%94-%E6%B8%85%E5%8D%8E/</guid><description><![CDATA[<div class="featured-image">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>保研 - Category - BreezEcho's Blog</title><link>https://breezecho.github.io/categories/%E4%BF%9D%E7%A0%94/</link><description>保研 - Category - BreezEcho's Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>l1477319644@163.com (BreezEcho)</managingEditor><webMaster>l1477319644@163.com (BreezEcho)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Oct 2022 22:00:00 +0800</lastBuildDate><atom:link href="https://breezecho.github.io/categories/%E4%BF%9D%E7%A0%94/" rel="self" type="application/rss+xml"/><item><title>16级学长的保研历程：从上大到清华</title><link>https://breezecho.github.io/16-%E5%8D%A2%E5%98%89%E8%BD%A9-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF-%E4%BF%9D%E7%A0%94-%E6%B8%85%E5%8D%8E/</link><pubDate>Sun, 30 Oct 2022 22:00:00 +0800</pubDate><author>卢嘉轩</author><guid>https://breezecho.github.io/16-%E5%8D%A2%E5%98%89%E8%BD%A9-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF-%E4%BF%9D%E7%A0%94-%E6%B8%85%E5%8D%8E/</guid><description><![CDATA[<div class="featured-image">
                 <img src="https://raw.githubusercontent.com/BreezEcho/PicGo/master/image-20221128214317550.png" referrerpolicy="no-referrer">
             </div>简介 时光飞逝，距离上大毕业已经过去许久，如今硕士生涯也即将进入尾声，16级也已经成为了历史。我是16级计科专业的本科毕业生，若无意外可能也是近年来计院成功推免并就读Top2高校的第一人。本篇文章针对我的保研经历仅基于回忆，具体的信息还需要依据学长学姐的最新分享为准。但除了保研以外，本文也会记录自己的一些代码外的思考以及就业方面的建议。希望对大家有用~
 基本情况 专业：上海大学计算机学院，计算机科学与技术，16级，主要方向：计算机视觉、深度学习 GPA：3.84 (推免时3.82)，成绩排名：2/273 (前期夏令营时4/273) 荣誉：国家奖学金，上海市奖学金，学业特等奖学金(连续三年)，创新创业奖学金(连续两年) 科研：中文核心水文*2，发明专利*1，软件著作权*1，国家级创新项目负责人，上海市创新项目负责人，项目若干 竞赛：美赛M奖，其余水奖近10项 六级：560+ 最终去向：清华大学软件学院 夏令营情况 获得入营资格：复旦大学计算机学院、中科大计算机学院、华中科技大学计算机学院、南京大学软件学院、同济大学电信学院、同济大学软件学院、上科大信息学院、华师大软件学院、华师大计算机系 参加的夏令营：复旦大学计算机学院 (未通过)、中科大计算机学院 (offer)、华中科技大学计算机学院 (offer)、同济大学电信学院 (offer) 采取海投策略，把一线城市的985高校几乎投了个遍，当年上大简历依然无法通过相当数量头部高校的初筛(尤其记得北理北航和所有中科院所皆没拿到资格)。由于时间冲突，后来仅参加了4所高校的夏令营，除复旦外都拿到了offer。
@@ -11,34 +11,4 @@ GPA：没什么好说的，排名越靠前越容易通过顶尖高校的初筛�
 显然，AI方向包括CV、NLP、推荐系统、数据挖掘、以及冷门的联邦学习、深度学习编译器等。在方向这个问题上，最重要的是自己的兴趣，其次是和先前科研/项目的匹配度，第三点是宏观市场的需求供应量预测。当然，第三点也是最困难的，若干年前CV在互联网几乎找不到落地场景，也因此CV算法的同学大批量转推荐系统；但近两年开始推荐系统在互联网的应用也达到了阶段性的瓶颈，反而CV因为自动驾驶行业的崛起而更受青睐。
 行业在变化，需求在变化，唯一不变的就是变化本身，也因此当下最为火热的技术并不代表未来就是好的。作为22年的硕士应届生也明显体会到AI算法相较于开发在就业形势上的巨大劣势，特别是互联网的降本增效也越来越多地在无法带来效益的算法团队上缩招甚至裁员。哪怕同属AI算法领域，冷门的深度学习编译器反而竞争更小，在22年这个节点上也更容易找到高薪工作。也因此，坦白而言，我其实后悔了当时坚持在AI赛道特别是CV方向，而没有具备足够的开发或者其他行业的相关能力。
 在导师选择上，由于我本科期间主要围绕计算机视觉、深度学习、机器学习方向展开相关的学习和项目，也因此主要也是联系AI方向(特别是计算机视觉)的导师。这里希望大家重视导师选择的问题，导师决定了未来硕士若干年的成果和幸福问题，要么实验室具有强劲的论文发表基础可以帮助自己科研，要么导师比较佛系可以有大量的自由时间或允许实习。
-后保研&amp;研究生生涯 保研后的这段时间是比较清闲的，一方面可以放松放松，做做自己感兴趣的事情，体验下真正的大学生活；另一方面，这也是段非常适合实习的好时期，去工业界体验下真正的工程研发也能够为今后的简历上填上一笔。]]></description></item><item><title>拨云开雾处，是一片星河</title><link>https://breezecho.github.io/%E7%9B%BC%E5%A4%B4/</link><pubDate>Sun, 30 Oct 2022 13:58:51 +0800</pubDate><author>BreezEcho</author><guid>https://breezecho.github.io/%E7%9B%BC%E5%A4%B4/</guid><description>对于我来说，生活的盼头，就是在获得立身之本的智慧的同时，去追寻自己所热爱的东西，不断发掘这个世界的多元性并与之建立联系。
-比如我喜欢新西兰民谣、风光摄影和cg作品，在课业之余我就会给自己一段时间去享受，长短不重要，重要的是那种纯粹的、无目的性的感觉。
-某些机缘巧合下我发现花花的歌、人像摄影、还有国风水墨画也挺不错，那么我就会觉得：欸，这些领域我也可以挖掘一下。
-我认为这个就是追寻热爱、发掘多元性的过程，它带给我纯粹的快乐。
-我们可以有这样的想法，但常常会迷失，包括我自己。
-而迷失的诱因主要有两点：成长环境、心理环境。
-这两点如果讲深了感觉可以写篇专业论文哈哈，不过经历过的应该懂的都懂，我就直接给出我的处理方式。
-而对一个人成长环境影响最大的就是家庭，人生不像是打游戏，不会从”请选择你的英雄“开始。我们不能保证我们的家庭质量，但是我们可以选择自己的活法，将人生的控制权掌控在自己的手里。最差的情况，如果感觉周围没有人能理解你，例如父母的不支持抑或是伤害、朋友的不理解。那就不妨孤身一人，过滤掉外界的噪声。当然这里不是建议大家一直寡着，而是需要有一种把自己交给自己的能力，如果有一对能无时无刻支持自己的父母，或是能找到一两个知己，那都是再好不过的。
-然后是心理环境，迷失主要源于不断的自我怀疑。很多时候我们自以为可以被称为烦恼的东西其实都不是烦恼，在时间的长河里甚至连浪花都算不上。不妨想一想，你有多少次烦恼源于自我否定。例如，我认为自己没有好听的声音，所以不能上台唱歌；或是我认为自己没有足够的实力，所以无法参加比赛等等。能不能自由的表演只有在你尝试了才知道，所以，如果真心想做，大胆去做、不断练习就可以了，没有那么多犹豫与烦恼，只有决心的有无。
-安身立命、强大内心、追逐热爱，永远闪闪发光。
-祝愿看到这篇随笔的各位都能找寻到自己想要的生活。
-希望对最近情绪状态不好的uu们能有所帮助。</description></item><item><title>BlogStory</title><link>https://breezecho.github.io/blogstory/</link><pubDate>Tue, 13 Sep 2022 01:35:51 +0800</pubDate><author>BreezEcho</author><guid>https://breezecho.github.io/blogstory/</guid><description>1. 本地配置 1.1 git相关资源下载 下载git
-安装相关包管理器，例如npm和yum，包管理器中含有某些博客主题需要的依赖
-设置git账号：global、local
-1.2 hugo下载 上官方网站进行下载，详情请见hugo release，注意下载hugo-extended版，适配性更强。
-下载完毕后，将文件路径/bin加入环境变量，重启电脑，打开命令行输入命令hugo version，若产生hugo版本号则证明安装完成。
-1.3 博客的配置 主流的个人博客搭建引擎包括hexo和hugo，这两个文件的主要差别在于主题配置的读取上，hexo博客根目录下的config.yaml文件比theme主题内置的config.yaml文件优先级更低，如果在根目录配置下指明了主题文件信息，那么引擎就会优先渲染后者；hugo与此相反，更侧重于主题文件的更新维护，所以一般需要将主题文件的配置拷贝到根目录下。具体的差异可以参考hexo与hugo的异同。
-我的博客用的是hugo-lovelt主题，主题配置参考lovelt官方文档即可，根目录主题配置记得参照主题文档examplesite下的.conf文件。
-在博客的主题的选择上，我踩了很多坑，一些主题文档的维护相当不好。在选择一款喜欢的主题时，一定要关注官方文档的质量哦。
-2. 云服务器配置 2.1 云主机购买与配置 云主机的选择：阿里云、腾讯云、华为云，这三款是主流。
-关于云主机的购买，具体可参考acwing-linux相关课程：
-云服务器的购买
-云主机的配置：
-我购买的是腾讯云的轻量级服务器，系统为linux下的ubuntu。在系统分配好云主机后，我们的初始化登录是一个叫ubuntu的账户。与一般的云服务器不同，腾讯云初始化没有root用户，但ubuntu拥有sudo权限。注意sudo权限与root权限有一定差异。具体的差异详见sudo与root。
-然后我们可以进行的一些操作：
-2.1.1 创建acs用户 建立：
-1 2 3 # ubuntu根目录~下 adduser acs # 创建用户acs usermod -aG sudo acs # 给用户acs分配sudo权限 查看是否成功：
-注意当我们cd acs或ubuntu时会进入到它们的根目录，但这个电脑下的系统设置文件在/下，也就是说，我们需要cd /才能看到到这台主机下的所有配置文件。同时，我们之后下载的很多文件都会被保存在/etc中。
-2.1.2 安装tmux和docker tmux安装教程
-1 2 sudo apt-get update # linux从服务器获取软件更新情况 sudo apt-get install tmux 在安装完成后，可以通过scp将一些tmux配置文件上传至云端，启用tmux，然后在命令行进行些许配置即可完成对tmux的美化。
-1 2 3 tmux # ctrl + b : 进入tmux命令行模式 source-file ~/.</description></item><item><title>Go Syntax</title><link>https://breezecho.github.io/%E6%B5%8B%E8%AF%95/</link><pubDate>Sat, 10 Sep 2022 21:08:48 +0800</pubDate><author>BreezEcho</author><guid>https://breezecho.github.io/%E6%B5%8B%E8%AF%95/</guid><description>&lt;p>你好&lt;/p></description></item><item><title>Theme Documentation - Basics</title><link>https://breezecho.github.io/theme-documentation-basics/</link><pubDate>Fri, 06 Mar 2020 21:29:01 +0800</pubDate><author>Dillon</author><guid>https://breezecho.github.io/theme-documentation-basics/</guid><description>&lt;p>Discover what the Hugo - &lt;strong>LoveIt&lt;/strong> theme is all about and the core-concepts behind it.&lt;/p></description></item></channel></rss>
+后保研&amp;研究生生涯 保研后的这段时间是比较清闲的，一方面可以放松放松，做做自己感兴趣的事情，体验下真正的大学生活；另一方面，这也是段非常适合实习的好时期，去工业界体验下真正的工程研发也能够为今后的简历上填上一笔。]]></description></item></channel></rss>
