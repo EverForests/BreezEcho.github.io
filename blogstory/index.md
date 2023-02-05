@@ -59,10 +59,6 @@ adduser acs  # 创建用户acs
 usermod -aG sudo acs  # 给用户acs分配sudo权限
 ```
 
-查看是否成功：
-
-![image-20220912173534927](https://raw.githubusercontent.com/huansong-dev/PicGo/master/image-20220912173534927.png)
-
 注意当我们`cd acs`或ubuntu时会进入到它们的根目录，但这个电脑下的系统设置文件在/下，也就是说，我们需要cd /才能看到到这台主机下的所有配置文件。同时，我们之后下载的很多文件都会被保存在/etc中。
 
 #### 2.1.2 安装tmux和docker
@@ -298,11 +294,11 @@ git push -u origin master  # 首次推送信息，之后可以将-u省去
 
 进入github用户界面的setting下:
 
-![image-20220913002411963](https://raw.githubusercontent.com/huansong-dev/PicGo/master/image-20220913002411963.png)
+![](https://user-images.githubusercontent.com/112888355/216828637-53ac1957-b141-4ab7-91ef-cd0b2f1c6925.jpg)
 
 选择右上角新建个人密钥，选中repo和workflow，然后点击生成。注意密钥只会出现一次，记得复制。将这里得到的密钥添加到我们项目仓库的actions secrets，并命名为PERSONAL_TOKEN
 
-![image-20220913002757402](https://raw.githubusercontent.com/huansong-dev/PicGo/master/image-20220913002757402.png)
+![image-20220913002757402](https://user-images.githubusercontent.com/112888355/216828676-85c132d3-ae31-466e-a57f-c27dba67776a.jpg)
 
 #### 5.1.2 建立github actions工作流
 
