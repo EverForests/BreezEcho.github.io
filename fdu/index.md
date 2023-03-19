@@ -1,13 +1,11 @@
 # FDU
 
 
+![image-20230319094329584](https://picbed-1308729097.cos.ap-shanghai.myqcloud.com/typora/image-20230319094329584.png)
 
+![image-20230319094358617](https://picbed-1308729097.cos.ap-shanghai.myqcloud.com/typora/image-20230319094358617.png)
 
-![image-20221005073953848](https://raw.githubusercontent.com/BreezEcho/PicGo/master/image-20221005073953848.png)
-
-![image-20221005074242994](https://raw.githubusercontent.com/BreezEcho/PicGo/master/image-20221005074242994.png)
-
-![image-20221005074300934](https://raw.githubusercontent.com/BreezEcho/PicGo/master/image-20221005074300934.png)
+![image-20230319094409358](https://picbed-1308729097.cos.ap-shanghai.myqcloud.com/typora/image-20230319094409358.png)
 
 [2022招生专业目录](https://www.zhihu.com/search?type=content&q=%E5%A4%8D%E6%97%A6cs%E4%B8%93%E7%A1%95%E4%B8%93%E4%B8%9A%E6%96%B9%E5%90%91)
 
@@ -70,9 +68,9 @@
 
 方式
 
-![v2-edc87e2c6e1005808fb87e2f6b248c9e_720w](https://raw.githubusercontent.com/BreezEcho/PicGo/master/v2-edc87e2c6e1005808fb87e2f6b248c9e_720w.webp)
+![v2-edc87e2c6e1005808fb87e2f6b248c9e_720w](https://picbed-1308729097.cos.ap-shanghai.myqcloud.com/typora/v2-edc87e2c6e1005808fb87e2f6b248c9e_720w.webp)
 
-![v2-35dc4b7fafb3935696722df403d5619e_b](https://raw.githubusercontent.com/BreezEcho/PicGo/master/v2-35dc4b7fafb3935696722df403d5619e_b.jpg)
+![image-20230319094434869](https://picbed-1308729097.cos.ap-shanghai.myqcloud.com/typora/image-20230319094434869.png)
 
 [408](计算机 408 要怎样复习才可以上 120？ - 婪瘾青年的回答 - 知乎 https://www.zhihu.com/question/379215729/answer/1816003835)
 
