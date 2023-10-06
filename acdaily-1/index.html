@@ -1,0 +1,172 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>ACDaily 1 - 林知的小窝</title><meta name=description content="林知的个人博客"><meta property="og:title" content="ACDaily 1"><meta property="og:description" content="前缀和模板题 1. 前缀和 输入一个长度为 n 的整数序列。 接下来再输入 m 个询问，每个询问输入一对 l,r。 对于每个询问，输出原序列中从第 l 个数到第 r 个数"><meta property="og:type" content="article"><meta property="og:url" content="https://breezecho.github.io/acdaily-1/"><meta property="og:image" content="https://breezecho.github.io/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-03-01T01:35:51+08:00"><meta property="article:modified_time" content="2023-10-06T20:49:29+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://breezecho.github.io/logo.png"><meta name=twitter:title content="ACDaily 1"><meta name=twitter:description content="前缀和模板题 1. 前缀和 输入一个长度为 n 的整数序列。 接下来再输入 m 个询问，每个询问输入一对 l,r。 对于每个询问，输出原序列中从第 l 个数到第 r 个数"><meta name=application-name content="breezecho"><meta name=apple-mobile-web-app-title content="breezecho"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=/images/avatar.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://breezecho.github.io/acdaily-1/><link rel=prev href=https://breezecho.github.io/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/><link rel=next href=https://breezecho.github.io/acdaily-2/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"ACDaily 1","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/breezecho.github.io\/acdaily-1\/"},"image":[{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/Apple-Devices-Preview.webp","width":1129,"height":614}],"genre":"posts","keywords":"前缀和","wordcount":819,"url":"https:\/\/breezecho.github.io\/acdaily-1\/","datePublished":"2022-03-01T01:35:51+08:00","dateModified":"2023-10-06T20:49:29+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/avatar.webp","width":300,"height":300}},"author":{"@type":"Person","name":"林知"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/categories/documentation/>文档 </a><a class=menu-item href=/about/>关于 </a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=# class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=# class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/categories/documentation/ title>文档</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i></a><div class=menu-item><a href=javascript:void(0); class=theme-switch title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single" data-toc=enable><div class=single-card><h2 class="single-title animated flipInX">ACDaily 1</h2><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>林知</a></span>&nbsp;<span class=post-category>出版于 <a href=/categories/acdaily/><i class="far fa-folder fa-fw"></i>ACDaily</a></span></div><div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-03-01>2022-03-01</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 819 字</span>&nbsp;
+<span><i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 2 分钟</span>&nbsp;</div></div><hr><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#1-前缀和>1. 前缀和</a><ul><li><ul><li><a href=#输入格式>输入格式</a></li><li><a href=#输出格式>输出格式</a></li><li><a href=#数据范围>数据范围</a></li><li><a href=#输入样例>输入样例：</a></li><li><a href=#输出样例>输出样例：</a></li><li><a href=#题解>题解</a></li></ul></li></ul></li><li><a href=#2-子矩阵和>2. 子矩阵和</a><ul><li><ul><li><a href=#输入格式-1>输入格式</a></li><li><a href=#输出格式-1>输出格式</a></li><li><a href=#数据范围-1>数据范围</a></li><li><a href=#输入样例-1>输入样例：</a></li><li><a href=#输出样例-1>输出样例：</a></li><li><a href=#题解-1>题解</a></li></ul></li></ul></li></ul></nav></div></div><div class=content id=content><h1 id=前缀和模板题>前缀和模板题</h1><h2 id=1-前缀和>1. 前缀和</h2><p>输入一个长度为 n 的整数序列。</p><p>接下来再输入 m 个询问，每个询问输入一对 l,r。</p><p>对于每个询问，输出原序列中从第 l 个数到第 r 个数的和。</p><h4 id=输入格式>输入格式</h4><p>第一行包含两个整数 n和 m。</p><p>第二行包含 n 个整数，表示整数数列。</p><p>接下来 m 行，每行包含两个整数 l 和 r，表示一个询问的区间范围。</p><h4 id=输出格式>输出格式</h4><p>共 m行，每行输出一个询问的结果。</p><h4 id=数据范围>数据范围</h4><p>1≤l≤r≤n,
+1≤n,m≤100000
+−1000≤数列中元素的值≤1000</p><h4 id=输入样例>输入样例：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>5 3
+</span></span><span class=line><span class=cl>2 1 3 6 4
+</span></span><span class=line><span class=cl>1 2
+</span></span><span class=line><span class=cl>1 3
+</span></span><span class=line><span class=cl>2 4
+</span></span></code></pre></td></tr></table></div></div><h4 id=输出样例>输出样例：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>3
+</span></span><span class=line><span class=cl>6
+</span></span><span class=line><span class=cl>10
+</span></span></code></pre></td></tr></table></div></div><h4 id=题解>题解</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-C++ data-lang=C++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>100010</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>a</span><span class=p>[</span><span class=n>N</span><span class=p>],</span> <span class=n>s</span><span class=p>[</span><span class=n>N</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>n</span><span class=p>,</span> <span class=n>m</span><span class=p>,</span> <span class=n>num</span><span class=p>,</span> <span class=n>l</span><span class=p>,</span> <span class=n>r</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>n</span> <span class=o>&gt;&gt;</span> <span class=n>m</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>num</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>a</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>num</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=n>s</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>s</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=n>a</span><span class=p>[</span><span class=n>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>while</span><span class=p>(</span><span class=n>m</span><span class=o>--</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>l</span> <span class=o>&gt;&gt;</span> <span class=n>r</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>s</span><span class=p>[</span><span class=n>r</span><span class=p>]</span> <span class=o>-</span> <span class=n>s</span><span class=p>[</span><span class=n>l</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>不构建前缀和数组只能通过6个数据</li><li>使用C输入输出能够大大提高程序运行速度</li></ul><hr><h2 id=2-子矩阵和>2. 子矩阵和</h2><p>输入一个 n 行 m 列的整数矩阵，再输入 q 个询问，每个询问包含四个整数 x1,y1,x2,y2，表示一个子矩阵的左上角坐标和右下角坐标。</p><p>对于每个询问输出子矩阵中所有数的和。</p><h4 id=输入格式-1>输入格式</h4><p>第一行包含三个整数 n，m，q。</p><p>接下来 n 行，每行包含 m 个整数，表示整数矩阵。</p><p>接下来 q 行，每行包含四个整数 x1,y1,x2,y2表示一组询问。</p><h4 id=输出格式-1>输出格式</h4><p>共 q 行，每行输出一个询问的结果。</p><h4 id=数据范围-1>数据范围</h4><p>1≤n,m≤1000,
+1≤q≤200000
+1≤x1≤x2≤n
+1≤y1≤y2≤m
+−1000≤矩阵内元素的值≤1000</p><h4 id=输入样例-1>输入样例：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>3 4 3
+</span></span><span class=line><span class=cl>1 7 2 4
+</span></span><span class=line><span class=cl>3 6 2 8
+</span></span><span class=line><span class=cl>2 1 2 3
+</span></span><span class=line><span class=cl>1 1 2 2
+</span></span><span class=line><span class=cl>2 1 3 4
+</span></span><span class=line><span class=cl>1 3 3 4
+</span></span></code></pre></td></tr></table></div></div><h4 id=输出样例-1>输出样例：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>17
+</span></span><span class=line><span class=cl>27
+</span></span><span class=line><span class=cl>21
+</span></span></code></pre></td></tr></table></div></div><h4 id=题解-1>题解</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-C++ data-lang=C++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstdio&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>1010</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>a</span><span class=p>[</span><span class=n>N</span><span class=p>][</span><span class=n>N</span><span class=p>],</span> <span class=n>s</span><span class=p>[</span><span class=n>N</span><span class=p>][</span><span class=n>N</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>n</span><span class=p>,</span> <span class=n>m</span><span class=p>,</span> <span class=n>q</span><span class=p>,</span> <span class=n>k</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>x1</span><span class=p>,</span> <span class=n>y1</span><span class=p>,</span> <span class=n>x2</span><span class=p>,</span> <span class=n>y2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>n</span> <span class=o>&gt;&gt;</span> <span class=n>m</span> <span class=o>&gt;&gt;</span> <span class=n>q</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>m</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>k</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=n>a</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]</span> <span class=o>=</span> <span class=n>k</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>m</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=n>s</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]</span> <span class=o>=</span> <span class=n>s</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>j</span><span class=p>]</span> <span class=o>+</span> <span class=n>s</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span> <span class=o>-</span> <span class=n>s</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>j</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=n>a</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>    <span class=k>while</span><span class=p>(</span><span class=n>q</span><span class=o>--</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>x1</span> <span class=o>&gt;&gt;</span> <span class=n>y1</span> <span class=o>&gt;&gt;</span> <span class=n>x2</span> <span class=o>&gt;&gt;</span> <span class=n>y2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>s</span><span class=p>[</span><span class=n>x2</span><span class=p>][</span><span class=n>y2</span><span class=p>]</span><span class=o>-</span><span class=n>s</span><span class=p>[</span><span class=n>x1</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>y2</span><span class=p>]</span><span class=o>-</span><span class=n>s</span><span class=p>[</span><span class=n>x2</span><span class=p>][</span><span class=n>y1</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>+</span><span class=n>s</span><span class=p>[</span><span class=n>x1</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>y1</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>在构建前缀和时要注意运用递推的思想，不能陷入循环</li></ul></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/%E5%89%8D%E7%BC%80%E5%92%8C/>前缀和</a></span></div><div class=post-info-line><div class=post-info-mod><span>更新于 2023-10-06&nbsp;<a class=git-hash href=https://github.com/khusika/FeelIt/commit/b6695f1766c416f671a3c8424f727908cefe6191 target=_blank title="committed&nbsp;by&nbsp;BreezEcho(l1477319644@163.com)&nbsp;b6695f1:&nbsp;rebuilding site date">
+<i class="fas fa-hashtag fa-fw"></i>b6695f1</a></span></div><div class=post-info-mod><span><a class=link-to-markdown href=/acdaily-1/index.md target=_blank>阅读原始文档</a>
+</span><span>&nbsp;|&nbsp;
+<a class=link-to-markdown href=https://github.com/khusika/FeelIt/edit/main/exampleSite/content/posts/ACDaily/ACDaily-1.md target=_blank>Improve Article</a></span></div></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://breezecho.github.io/acdaily-1/ data-title="ACDaily 1" data-hashtags=前缀和><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://breezecho.github.io/acdaily-1/ data-hashtag=前缀和><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://breezecho.github.io/acdaily-1/ data-title="ACDaily 1"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://breezecho.github.io/acdaily-1/ data-title="ACDaily 1"><i class="fab fa-line fa-fw"></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://breezecho.github.io/acdaily-1/ data-title="ACDaily 1"><i class="fab fa-weibo fa-fw"></i></a></span></div></div><div class=post-nav><a href=/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/ class=prev rel=prev title=双指针、BFS和图论><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+<a href=/acdaily-2/ class=next rel=next title="ACDaily 2">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div></div><div id=comments class=single-card></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2021 - 2023</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>林知</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span><span class=icp-splitter>&nbsp;|&nbsp;</span><br class=icp-br><span class=icp>沪ICP备2022027236号-1</span></div></div><script>"serviceWorker"in navigator&&(navigator.serviceWorker.register("/sw.min.js?version=1.0.1",{scope:"/"}).then(()=>{console.info("林知的小窝\u00A0Service Worker Registered")},e=>console.error("林知的小窝\u00A0Service Worker registration failed: ",e)),navigator.serviceWorker.ready.then(()=>{console.info("林知的小窝\u00A0Service Worker Ready")}))</script></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-chevron-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment-alt fa-fw"></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.css><script src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js></script><script src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script src=/lib/lunr/lunr.stemmer.support.min.js></script><script src=/lib/lunr/lunr.zh.min.js></script><script src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script><script src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.1/sharer.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/mhchem.min.js></script><script>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>

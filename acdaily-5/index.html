@@ -1,0 +1,301 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>ACDaily 5 - 林知的小窝</title><meta name=description content="林知的个人博客"><meta property="og:title" content="ACDaily 5"><meta property="og:description" content="从集合角度分析DP问题 算法特点 一般问法：最值（价值等属性）、达到某一目标的方向总数 背包问题的本质为组合问题，即在一定条件下从一部分物品中挑选"><meta property="og:type" content="article"><meta property="og:url" content="https://breezecho.github.io/acdaily-5/"><meta property="og:image" content="https://breezecho.github.io/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-03-05T01:35:51+08:00"><meta property="article:modified_time" content="2023-10-06T20:49:29+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://breezecho.github.io/logo.png"><meta name=twitter:title content="ACDaily 5"><meta name=twitter:description content="从集合角度分析DP问题 算法特点 一般问法：最值（价值等属性）、达到某一目标的方向总数 背包问题的本质为组合问题，即在一定条件下从一部分物品中挑选"><meta name=application-name content="breezecho"><meta name=apple-mobile-web-app-title content="breezecho"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=/images/avatar.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://breezecho.github.io/acdaily-5/><link rel=prev href=https://breezecho.github.io/acdaily-4/><link rel=next href=https://breezecho.github.io/acdaily-6/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"ACDaily 5","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/breezecho.github.io\/acdaily-5\/"},"image":[{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/Apple-Devices-Preview.webp","width":1129,"height":614}],"genre":"posts","keywords":"DP, 背包问题","wordcount":2454,"url":"https:\/\/breezecho.github.io\/acdaily-5\/","datePublished":"2022-03-05T01:35:51+08:00","dateModified":"2023-10-06T20:49:29+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/avatar.webp","width":300,"height":300}},"author":{"@type":"Person","name":"林知"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/categories/documentation/>文档 </a><a class=menu-item href=/about/>关于 </a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=# class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=# class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/categories/documentation/ title>文档</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i></a><div class=menu-item><a href=javascript:void(0); class=theme-switch title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single" data-toc=enable><div class=single-card><h2 class="single-title animated flipInX">ACDaily 5</h2><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>林知</a></span>&nbsp;<span class=post-category>出版于 <a href=/categories/acdaily/><i class="far fa-folder fa-fw"></i>ACDaily</a></span></div><div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-03-05>2022-03-05</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2454 字</span>&nbsp;
+<span><i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟</span>&nbsp;</div></div><hr><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#算法特点>算法特点</a></li><li><a href=#01背包>01背包</a><ul><li><a href=#算法架构动态规划集合化>算法架构：动态规划集合化</a></li></ul></li><li><a href=#1-摘花生>1. 摘花生</a><ul><li><ul><li><a href=#输入格式>输入格式</a></li><li><a href=#输出格式>输出格式</a></li><li><a href=#数据范围>数据范围</a></li><li><a href=#输入样例>输入样例：</a></li><li><a href=#输出样例>输出样例：</a></li><li><a href=#题解>题解：</a></li></ul></li></ul></li><li><a href=#2-最长上升子序列>2. 最长上升子序列</a><ul><li><ul><li><a href=#输入格式-1>输入格式</a></li><li><a href=#输出格式-1>输出格式</a></li><li><a href=#数据范围-1>数据范围</a></li><li><a href=#输入样例-1>输入样例：</a></li><li><a href=#输出样例-1>输出样例：</a></li><li><a href=#题解-1>题解：</a></li></ul></li></ul></li><li><a href=#3-地宫寻宝>3. 地宫寻宝</a><ul><li><ul><li><a href=#输入格式-2>输入格式</a></li><li><a href=#输出格式-2>输出格式</a></li><li><a href=#数据范围-2>数据范围</a></li><li><a href=#输入样例1>输入样例1：</a></li><li><a href=#输出样例1>输出样例1：</a></li><li><a href=#输入样例2>输入样例2：</a></li><li><a href=#输出样例2>输出样例2：</a></li><li><a href=#题解-2>题解：</a></li></ul></li></ul></li></ul></nav></div></div><div class=content id=content><h1 id=从集合角度分析dp问题>从集合角度分析DP问题</h1><h2 id=算法特点>算法特点</h2><ul><li><p>一般问法：最值（价值等属性）、达到某一目标的方向总数</p></li><li><p>背包问题的本质为组合问题，即在一定条件下从一部分物品中挑选物品；同时也类似于图论的最短路，可以说，DP是一种特殊的图论</p></li><li><p>暴力做法：方案数量为指数级</p></li><li><p>化零为整：挖掘不同方案间的共同关系，把有相同关系的元素放在一起</p></li><li><p>化整为零：把一个集合划分为多个子集，进行分析</p></li><li><p>解决问题的过程中一定抓住从实际含义出发</p></li></ul><p>具体的分析在下述例题中会有解释</p><p>题解的优化可以参考<a href=https://www.waitingfor.cn/2022/03/04/ACDaily/ACDaily-4/ target=_blank rel="noopener noreffer">ACDaily 4</a></p><h2 id=01背包>01背包</h2><p>有 N 件物品和一个容量是 V 的背包。每件物品只能使用一次。</p><p>第 i 件物品的体积是 vi，价值是 wi。</p><p>求解将哪些物品装入背包，可使这些物品的总体积不超过背包容量，且总价值最大。
+输出最大价值。</p><blockquote><p>本题题解具体优化可以参考<a href=https://www.waitingfor.cn/2022/03/04/ACDaily/ACDaily-4/ target=_blank rel="noopener noreffer">ACDaily 4</a>，此处借此例讲解动态规划基本的算法架构</p></blockquote><h3 id=算法架构动态规划集合化>算法架构：动态规划集合化</h3><ol><li><p>状态表示（一般为二维，不可能超时）<code>f[i][j]</code></p><ul><li>集合的思想，<code>f[i][j]</code>表示的并非是j体积背包下对前i个物品进行选择下的价值最大值，<strong>而是j体积下对前i个物品进行选择下的所有方案的最大价值</strong>（每个物品可选可不选）</li><li>属性：min、max、count，即数组中的元素表示最值或方案数</li></ul></li><li><p>状态计算(化零为整)</p><ol><li>集合的划分，划分依据：<strong>最后一个不同点</strong>。即在限制条件下（确定问题域），按<strong>选或不选第i个物品（i个物品中的最后物品）对方案进行划分</strong>为A（选i）和B（不选i)集合<ul><li>要求：不重不漏，每个子集中的元素具有相同共性（都选或没选第i个物品），各子集又能组合成全集</li></ul></li><li>对不选i的集合中（B）所有方案的最大价值进行计算，得到max1</li><li>按物品选择是否发生变化，对上述划分包含选择第i个物品的方案（即A方案集合）进行分区，物品i所在区域为不变区，前i-1个物品组成的区域为变化区</li><li>寻找变化区中总价值最大的物品选择方案，加上第i个物品的价值，得到最大价值max2</li><li>求<code>max(max1, max2)</code>,得到整体最大价值</li></ol><blockquote><p>关键在于选择划分方式，例如以下的摘花生与最大子序列长度</p></blockquote></li></ol><h2 id=1-摘花生>1. 摘花生</h2><p>Hello Kitty想摘点花生送给她喜欢的米老鼠。</p><p>她来到一片有网格状道路的矩形花生地(如下图)，从西北角进去，东南角出来。</p><p>地里每个道路的交叉点上都有种着一株花生苗，上面有若干颗花生，经过一株花生苗就能摘走该它上面所有的花生。</p><p>Hello Kitty只能向东或向南走，不能向西或向北走。</p><p>问Hello Kitty最多能够摘到多少颗花生。</p><h4 id=输入格式>输入格式</h4><p>第一行是一个整数T，代表一共有多少组数据。</p><p>接下来是T组数据。</p><p>每组数据的第一行是两个整数，分别代表花生苗的行数R和列数 C。</p><p>每组数据的接下来R行数据，从北向南依次描述每行花生苗的情况。每行数据有C个整数，按从西向东的顺序描述了该行每株花生苗上的花生数目M。</p><h4 id=输出格式>输出格式</h4><p>对每组输入数据，输出一行，内容为Hello Kitty能摘到得最多的花生颗数。</p><h4 id=数据范围>数据范围</h4><p>1≤T≤100,
+1≤R,C≤100,
+0≤M≤1000</p><h4 id=输入样例>输入样例：</h4><p>2
+2 2
+1 1
+3 4
+2 3
+2 3 4
+1 6 5</p><h4 id=输出样例>输出样例：</h4><p>8
+16</p><h4 id=题解>题解：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstdio&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;algorithm&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstring&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>55</span><span class=p>,</span> <span class=n>MOD</span> <span class=o>=</span> <span class=mi>1000000007</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>w</span><span class=p>[</span><span class=n>N</span><span class=p>][</span><span class=n>N</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>f</span><span class=p>[</span><span class=n>N</span><span class=p>][</span><span class=n>N</span><span class=p>][</span><span class=mi>13</span><span class=p>][</span><span class=mi>14</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>n</span><span class=p>,</span> <span class=n>m</span><span class=p>,</span> <span class=n>k</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>n</span> <span class=o>&gt;&gt;</span> <span class=n>m</span> <span class=o>&gt;&gt;</span> <span class=n>k</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>m</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>    
+</span></span><span class=line><span class=cl>            <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>            <span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]</span><span class=o>++</span><span class=p>;</span>  <span class=c1>// 调整整体价值范围
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>][</span><span class=n>w</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>]]</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>  <span class=c1>// 初始化
+</span></span></span><span class=line><span class=cl><span class=c1></span>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>m</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span><span class=p>(</span><span class=n>i</span> <span class=o>==</span> <span class=mi>1</span> <span class=o>&amp;&amp;</span> <span class=n>j</span> <span class=o>==</span> <span class=mi>1</span><span class=p>)</span> <span class=k>continue</span><span class=p>;</span>  <span class=c1>// 起点已进行过初始化
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>u</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>u</span> <span class=o>&lt;=</span> <span class=n>k</span><span class=p>;</span> <span class=n>u</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>v</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>v</span> <span class=o>&lt;=</span> <span class=mi>13</span><span class=p>;</span> <span class=n>v</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=kt>int</span> <span class=o>&amp;</span><span class=n>val</span> <span class=o>=</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>][</span><span class=n>u</span><span class=p>][</span><span class=n>v</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                    <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>j</span><span class=p>][</span><span class=n>u</span><span class=p>][</span><span class=n>v</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>u</span><span class=p>][</span><span class=n>v</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    
+</span></span><span class=line><span class=cl>                    <span class=k>if</span><span class=p>(</span><span class=n>u</span> <span class=o>&gt;</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>v</span> <span class=o>==</span> <span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>                    <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>c</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>c</span> <span class=o>&lt;</span> <span class=n>v</span><span class=p>;</span> <span class=n>c</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                        <span class=p>{</span>
+</span></span><span class=line><span class=cl>                            <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>j</span><span class=p>][</span><span class=n>u</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>c</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                            <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>u</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>c</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                        <span class=p>}</span>
+</span></span><span class=line><span class=cl>                        
+</span></span><span class=line><span class=cl>                    <span class=p>}</span>
+</span></span><span class=line><span class=cl>                <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>res</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>c</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>c</span> <span class=o>&lt;=</span> <span class=mi>13</span><span class=p>;</span> <span class=n>c</span><span class=o>++</span><span class=p>)</span> <span class=n>res</span> <span class=o>=</span> <span class=p>(</span><span class=n>res</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>n</span><span class=p>][</span><span class=n>m</span><span class=p>][</span><span class=n>k</span><span class=p>][</span><span class=n>c</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>res</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=2-最长上升子序列>2. 最长上升子序列</h2><p>给定一个长度为 N 的数列，求数值严格单调递增的子序列的长度最长是多少。</p><h4 id=输入格式-1>输入格式</h4><p>第一行包含整数 N。</p><p>第二行包含 N 个整数，表示完整序列。</p><h4 id=输出格式-1>输出格式</h4><p>输出一个整数，表示最大长度。</p><h4 id=数据范围-1>数据范围</h4><p>1≤N≤1000，
+−109≤数列中的数≤109</p><h4 id=输入样例-1>输入样例：</h4><p>7
+3 1 2 1 8 5 6</p><h4 id=输出样例-1>输出样例：</h4><p>4</p><h4 id=题解-1>题解：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>1010</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>n</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>w</span><span class=p>[</span><span class=n>N</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>N</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>n</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>mx</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>    <span class=c1>// 找出所计算的f[i]之中的最大值，边算边找
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span> <span class=o>&gt;=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span><span class=o>--</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>    <span class=c1>// 设f[i]默认为1，找不到前面数字小于自己的时候就为1
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=n>i</span><span class=o>+</span><span class=mi>1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>n</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>&lt;</span> <span class=n>w</span><span class=p>[</span><span class=n>j</span><span class=p>])</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>],</span> <span class=n>f</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>+</span> <span class=mi>1</span><span class=p>);</span>    <span class=c1>// 这种写法是f[j]已经更新过的正常写法
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=n>mx</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>mx</span><span class=p>,</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>mx</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=3-地宫寻宝>3. 地宫寻宝</h2><p>X 国王有一个地宫宝库，是 n×m 个格子的矩阵，每个格子放一件宝贝，每个宝贝贴着价值标签。</p><p>地宫的入口在左上角，出口在右下角。</p><p>小明被带到地宫的入口，国王要求他只能向右或向下行走。</p><p>走过某个格子时，如果那个格子中的宝贝价值比小明手中任意宝贝价值都大，小明就可以拿起它（当然，也可以不拿）。</p><p>当小明走到出口时，如果他手中的宝贝恰好是 k 件，则这些宝贝就可以送给小明。</p><p>请你帮小明算一算，在给定的局面下，他有多少种不同的行动方案能获得这 k 件宝贝。</p><h4 id=输入格式-2>输入格式</h4><p>第一行 3 个整数，n,m,k，含义见题目描述。</p><p>接下来 n 行，每行有 m 个整数 Ci 用来描述宝库矩阵每个格子的宝贝价值。</p><h4 id=输出格式-2>输出格式</h4><p>输出一个整数，表示正好取 k 个宝贝的行动方案数。</p><p>该数字可能很大，输出它对 1000000007 取模的结果。</p><h4 id=数据范围-2>数据范围</h4><p>1≤n,m≤50,
+1≤k≤12,
+0≤Ci≤12</p><h4 id=输入样例1>输入样例1：</h4><p>2 2 2
+1 2
+2 1</p><h4 id=输出样例1>输出样例1：</h4><p>2</p><h4 id=输入样例2>输入样例2：</h4><p>2 3 2
+1 2 3
+2 1 5</p><h4 id=输出样例2>输出样例2：</h4><p>14</p><h4 id=题解-2>题解：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstdio&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;algorithm&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstring&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>55</span><span class=p>,</span> <span class=n>MOD</span> <span class=o>=</span> <span class=mi>1000000007</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>w</span><span class=p>[</span><span class=n>N</span><span class=p>][</span><span class=n>N</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>f</span><span class=p>[</span><span class=n>N</span><span class=p>][</span><span class=n>N</span><span class=p>][</span><span class=mi>13</span><span class=p>][</span><span class=mi>14</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>n</span><span class=p>,</span> <span class=n>m</span><span class=p>,</span> <span class=n>k</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>n</span> <span class=o>&gt;&gt;</span> <span class=n>m</span> <span class=o>&gt;&gt;</span> <span class=n>k</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>m</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>    
+</span></span><span class=line><span class=cl>            <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>            <span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]</span><span class=o>++</span><span class=p>;</span>  <span class=c1>// 调整整体价值范围
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>][</span><span class=mi>0</span><span class=p>][</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>][</span><span class=n>w</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>]]</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>  <span class=c1>// 初始化
+</span></span></span><span class=line><span class=cl><span class=c1></span>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>m</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span><span class=p>(</span><span class=n>i</span> <span class=o>==</span> <span class=mi>1</span> <span class=o>&amp;&amp;</span> <span class=n>j</span> <span class=o>==</span> <span class=mi>1</span><span class=p>)</span> <span class=k>continue</span><span class=p>;</span>  <span class=c1>// 起点已进行过初始化
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>u</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>u</span> <span class=o>&lt;=</span> <span class=n>k</span><span class=p>;</span> <span class=n>u</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>v</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>v</span> <span class=o>&lt;=</span> <span class=mi>13</span><span class=p>;</span> <span class=n>v</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=kt>int</span> <span class=o>&amp;</span><span class=n>val</span> <span class=o>=</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>][</span><span class=n>u</span><span class=p>][</span><span class=n>v</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                    <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>j</span><span class=p>][</span><span class=n>u</span><span class=p>][</span><span class=n>v</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>u</span><span class=p>][</span><span class=n>v</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    
+</span></span><span class=line><span class=cl>                    <span class=k>if</span><span class=p>(</span><span class=n>u</span> <span class=o>&gt;</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>v</span> <span class=o>==</span> <span class=n>w</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>                    <span class=p>{</span>
+</span></span><span class=line><span class=cl>                        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>c</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>c</span> <span class=o>&lt;</span> <span class=n>v</span><span class=p>;</span> <span class=n>c</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                        <span class=p>{</span>
+</span></span><span class=line><span class=cl>                            <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>j</span><span class=p>][</span><span class=n>u</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>c</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                            <span class=n>val</span> <span class=o>=</span> <span class=p>(</span><span class=n>val</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>u</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>c</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                        <span class=p>}</span>
+</span></span><span class=line><span class=cl>                        
+</span></span><span class=line><span class=cl>                    <span class=p>}</span>
+</span></span><span class=line><span class=cl>                <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>res</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>    
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>c</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>c</span> <span class=o>&lt;=</span> <span class=mi>13</span><span class=p>;</span> <span class=n>c</span><span class=o>++</span><span class=p>)</span> <span class=n>res</span> <span class=o>=</span> <span class=p>(</span><span class=n>res</span> <span class=o>+</span> <span class=n>f</span><span class=p>[</span><span class=n>n</span><span class=p>][</span><span class=n>m</span><span class=p>][</span><span class=n>k</span><span class=p>][</span><span class=n>c</span><span class=p>])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>res</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/dp/>DP</a>
+</span><span><a href=/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/>背包问题</a></span></div><div class=post-info-line><div class=post-info-mod><span>更新于 2023-10-06&nbsp;<a class=git-hash href=https://github.com/khusika/FeelIt/commit/b6695f1766c416f671a3c8424f727908cefe6191 target=_blank title="committed&nbsp;by&nbsp;BreezEcho(l1477319644@163.com)&nbsp;b6695f1:&nbsp;rebuilding site date">
+<i class="fas fa-hashtag fa-fw"></i>b6695f1</a></span></div><div class=post-info-mod><span><a class=link-to-markdown href=/acdaily-5/index.md target=_blank>阅读原始文档</a>
+</span><span>&nbsp;|&nbsp;
+<a class=link-to-markdown href=https://github.com/khusika/FeelIt/edit/main/exampleSite/content/posts/ACDaily/ACDaily-5.md target=_blank>Improve Article</a></span></div></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://breezecho.github.io/acdaily-5/ data-title="ACDaily 5" data-hashtags=DP,背包问题><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://breezecho.github.io/acdaily-5/ data-hashtag=DP><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://breezecho.github.io/acdaily-5/ data-title="ACDaily 5"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://breezecho.github.io/acdaily-5/ data-title="ACDaily 5"><i class="fab fa-line fa-fw"></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://breezecho.github.io/acdaily-5/ data-title="ACDaily 5"><i class="fab fa-weibo fa-fw"></i></a></span></div></div><div class=post-nav><a href=/acdaily-4/ class=prev rel=prev title="ACDaily 4"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+<a href=/acdaily-6/ class=next rel=next title="ACDaily 6">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div></div><div id=comments class=single-card></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2021 - 2023</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>林知</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span><span class=icp-splitter>&nbsp;|&nbsp;</span><br class=icp-br><span class=icp>沪ICP备2022027236号-1</span></div></div><script>"serviceWorker"in navigator&&(navigator.serviceWorker.register("/sw.min.js?version=1.0.1",{scope:"/"}).then(()=>{console.info("林知的小窝\u00A0Service Worker Registered")},e=>console.error("林知的小窝\u00A0Service Worker registration failed: ",e)),navigator.serviceWorker.ready.then(()=>{console.info("林知的小窝\u00A0Service Worker Ready")}))</script></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-chevron-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment-alt fa-fw"></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.css><script src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js></script><script src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script src=/lib/lunr/lunr.stemmer.support.min.js></script><script src=/lib/lunr/lunr.zh.min.js></script><script src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script><script src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.1/sharer.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/mhchem.min.js></script><script>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>

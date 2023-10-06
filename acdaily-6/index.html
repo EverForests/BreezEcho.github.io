@@ -1,0 +1,181 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>ACDaily 6 - 林知的小窝</title><meta name=description content="林知的个人博客"><meta property="og:title" content="ACDaily 6"><meta property="og:description" content="背包问题练习与LeetCode初体验 这两天做题效率低了一些，不过背包是一块难啃的骨头，要集中一些。 波动数列 观察这个数列： 1 3 0 2 -1 1 -2 … 这个"><meta property="og:type" content="article"><meta property="og:url" content="https://breezecho.github.io/acdaily-6/"><meta property="og:image" content="https://breezecho.github.io/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-03-06T01:35:51+08:00"><meta property="article:modified_time" content="2023-10-06T20:49:29+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://breezecho.github.io/logo.png"><meta name=twitter:title content="ACDaily 6"><meta name=twitter:description content="背包问题练习与LeetCode初体验 这两天做题效率低了一些，不过背包是一块难啃的骨头，要集中一些。 波动数列 观察这个数列： 1 3 0 2 -1 1 -2 … 这个"><meta name=application-name content="breezecho"><meta name=apple-mobile-web-app-title content="breezecho"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=/images/avatar.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://breezecho.github.io/acdaily-6/><link rel=prev href=https://breezecho.github.io/acdaily-5/><link rel=next href=https://breezecho.github.io/acdaily-7/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"ACDaily 6","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/breezecho.github.io\/acdaily-6\/"},"image":[{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/Apple-Devices-Preview.webp","width":1129,"height":614}],"genre":"posts","keywords":"DP, 背包问题, LeetCode, 字符串拆分与拼接","wordcount":1862,"url":"https:\/\/breezecho.github.io\/acdaily-6\/","datePublished":"2022-03-06T01:35:51+08:00","dateModified":"2023-10-06T20:49:29+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/avatar.webp","width":300,"height":300}},"author":{"@type":"Person","name":"林知"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/categories/documentation/>文档 </a><a class=menu-item href=/about/>关于 </a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=# class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=# class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/categories/documentation/ title>文档</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i></a><div class=menu-item><a href=javascript:void(0); class=theme-switch title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single" data-toc=enable><div class=single-card><h2 class="single-title animated flipInX">ACDaily 6</h2><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>林知</a></span>&nbsp;<span class=post-category>出版于 <a href=/categories/acdaily/><i class="far fa-folder fa-fw"></i>ACDaily</a></span></div><div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-03-06>2022-03-06</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1862 字</span>&nbsp;
+<span><i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟</span>&nbsp;</div></div><hr><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#波动数列>波动数列</a><ul><li><ul><li><a href=#输入格式>输入格式</a></li><li><a href=#输出格式>输出格式</a></li><li><a href=#数据范围>数据范围</a></li><li><a href=#输入样例>输入样例：</a></li><li><a href=#输出样例>输出样例：</a></li><li><a href=#样例解释>样例解释</a></li><li><a href=#题解>题解：</a></li></ul></li></ul></li><li><a href=#leetcode初体验>LeetCode初体验</a></li><li><a href=#excel表中某个范围内的单元格>Excel表中某个范围内的单元格</a><ul><li><a href=#原始人做法>原始人做法</a></li><li><a href=#stl加持做法>STL加持做法</a></li></ul></li></ul></nav></div></div><div class=content id=content><h1 id=背包问题练习与leetcode初体验>背包问题练习与LeetCode初体验</h1><p>这两天做题效率低了一些，不过背包是一块难啃的骨头，要集中一些。</p><h2 id=波动数列>波动数列</h2><p>观察这个数列：</p><p>1 3 0 2 -1 1 -2 …</p><p>这个数列中后一项总是比前一项增加2或者减少3，且每一项都为整数。</p><p>栋栋对这种数列很好奇，他想知道长度为 n 和为 s 而且后一项总是比前一项增加 a 或者减少 b 的整数数列可能有多少种呢？</p><h4 id=输入格式>输入格式</h4><p>共一行，包含四个整数 n,s,a,b，含义如前面所述。</p><h4 id=输出格式>输出格式</h4><p>共一行，包含一个整数，表示满足条件的方案数。</p><p>由于这个数很大，请输出方案数除以 100000007 的余数。</p><h4 id=数据范围>数据范围</h4><p>1≤n≤1000,
+−109≤s≤109,
+1≤a,b≤106</p><h4 id=输入样例>输入样例：</h4><p>4 10 2 3</p><h4 id=输出样例>输出样例：</h4><p>2</p><h4 id=样例解释>样例解释</h4><p>两个满足条件的数列分别是2 4 1 3和7 4 1 -2。</p><h4 id=题解>题解：</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=k>using</span> <span class=k>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>1010</span><span class=p>,</span> <span class=n>MOD</span> <span class=o>=</span> <span class=mi>100000007</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>f</span><span class=p>[</span><span class=n>N</span><span class=p>][</span><span class=n>N</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>get_mod</span><span class=p>(</span><span class=kt>int</span> <span class=n>a</span><span class=p>,</span> <span class=kt>int</span> <span class=n>b</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>(</span><span class=n>a</span><span class=o>%</span><span class=n>b</span> <span class=o>+</span> <span class=n>b</span><span class=p>)</span> <span class=o>%</span> <span class=n>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>n</span><span class=p>,</span> <span class=n>s</span><span class=p>,</span> <span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>cin</span> <span class=o>&gt;&gt;</span> <span class=n>n</span> <span class=o>&gt;&gt;</span> <span class=n>s</span> <span class=o>&gt;&gt;</span> <span class=n>a</span> <span class=o>&gt;&gt;</span> <span class=n>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=n>f</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>n</span><span class=o>-</span><span class=mi>1</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>n</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]</span> <span class=o>=</span> <span class=p>(</span><span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>get_mod</span><span class=p>(</span><span class=n>j</span><span class=o>-</span><span class=n>a</span><span class=o>*</span><span class=p>(</span><span class=n>n</span><span class=o>-</span><span class=n>i</span><span class=p>),</span> <span class=n>n</span><span class=p>)]</span><span class=o>+</span><span class=n>f</span><span class=p>[</span><span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>get_mod</span><span class=p>(</span><span class=n>j</span> <span class=o>+</span> <span class=n>b</span><span class=o>*</span><span class=p>(</span><span class=n>n</span><span class=o>-</span><span class=n>i</span><span class=p>),</span> <span class=n>n</span><span class=p>)])</span> <span class=o>%</span> <span class=n>MOD</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>f</span><span class=p>[</span><span class=n>n</span><span class=o>-</span><span class=mi>1</span><span class=p>][</span><span class=n>get_mod</span><span class=p>(</span><span class=n>s</span><span class=p>,</span> <span class=n>n</span><span class=p>)]</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>按照我们在<a href=https://www.waitingfor.cn/2022/03/05/ACDaily/ACDaily-5/ target=_blank rel="noopener noreffer">ACDaily 5</a>提到的标准流程，先做好状态表示，再做好状态计算。</p><p>根据题意我们要求的是所有方案数，因此状态数组内存的应该是方案数。那么我们要给出的，是哪一类方案数呢。根据题意，我们可以设置一个起点数x，之后的每个数由于只比前一个数大a或少b，我们把它们记作di，表示相对于第i-1项的变化量。</p><p>在做了以上数学转换后，我们就可以得到一个等值的表达式。再来看看目的：n个数的序列之和应该是n的倍数，因此，我们可以将问题转化为：序列和s与di组合mod n达到同余要求的所有方案。</p><p>所以我们可以用<code>f[i][j]</code>表示前i个d(d1~dn-1)的所有组合同余j的方案数。</p><p>接着，我们根据化整为零的思想按照序列最后一项的区别对集合进行划分。观察到最后一项仅有<code>(n-i)*a</code>和<code>-(n-1)*b</code>两种可能，于是我们将这两种情况的方案数相加就可以得到当下情况的方案数。</p><p>再经过状态的合并来获得目标方案。</p><ul><li>几点要明确的</li></ul><ol><li>C++中负数模正数是可以得到负余数的，例如<code>a &lt; 0, b > 0</code> <code>a%b</code>就属于<code>-(b-1) ~ (b-1)</code>，因此在本题中设计了函数将负余数转化为正余数。</li><li>一切从实际出发，考虑各特征的合理范围</li><li>特别注意初始化起点的值</li><li>由于MOD为9位数，所以对于多数相加取模问题，我们需要一步一步地先做加法再取模，也就是加一个数，取一次模，再加一个数，再取一次模，直到把所有数加完。</li></ol><h2 id=leetcode初体验>LeetCode初体验</h2><p>第一次参加LeetCode周赛，有许多不适应的地方，不过参加过了就有了一些了解与体会。</p><ol><li>LeetCode系统会默认添加所有C++头文件，这也是很多人喜欢用C++打比赛的原因，因为STL的数据结构集成性非常好。</li><li>在代码区，系统会为你提供一个Solution类，并且给出解答该题的函数设计框架，算是一种提示吧。如果需要全局变量，我们就需要设计静态成员，然后初始化；一般变量则可以直接在函数内定义。其实，规范一些，我们的所有变量都应该在数据成员区进行定义。</li><li>要多打打这些有时限的算法比赛，激活自己的状态，同时也能意识到自己在哪些地方有不足，是一种很好的反馈。</li><li>这次只AC了一道题，与大佬们还有很大差距，冲冲冲。</li></ol><h2 id=excel表中某个范围内的单元格>Excel表中某个范围内的单元格</h2><p>概述：给定一个Excel表格区间<code>letter1 i:letter2 j</code>并且<code>'A'&lt;= letter1 &lt;= letter2 &lt;= 'Z', i &lt;= j</code>，要求输出这个范围的所有格子，假如给定的区间为<code>K1:L2</code>,那么我们就应该输出向量<code>["K1", "K2", "L1", "L2"]</code>，可以看到，在满足条件的区域遍历的顺序为由上而下，由左而右。</p><p>原题链接可以参考<a href=https://leetcode-cn.com/problems/cells-in-a-range-on-an-excel-sheet/ target=_blank rel="noopener noreffer">LeetCode.6016</a></p><h3 id=原始人做法>原始人做法</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>cellsInRange</span><span class=p>(</span><span class=n>string</span> <span class=n>s</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>list</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=kt>char</span> <span class=n>a</span><span class=p>[</span><span class=mi>2</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=kt>char</span> <span class=n>b</span><span class=p>[</span><span class=mi>2</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=kt>char</span> <span class=n>letter</span><span class=p>[</span><span class=mi>26</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>26</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=n>letter</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>i</span><span class=o>+</span><span class=mi>65</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=kt>char</span> <span class=o>*</span><span class=n>str</span> <span class=o>=</span> <span class=p>(</span><span class=kt>char</span><span class=o>*</span><span class=p>)</span><span class=n>s</span><span class=p>.</span><span class=n>data</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=k>const</span> <span class=kt>char</span> <span class=o>*</span><span class=n>d</span> <span class=o>=</span> <span class=s>&#34;:&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=kt>char</span> <span class=o>*</span><span class=n>p</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>p</span> <span class=o>=</span> <span class=n>strtok</span><span class=p>(</span><span class=n>str</span><span class=p>,</span> <span class=n>d</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>a</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>p</span><span class=p>[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=n>b</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>p</span><span class=p>[</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=n>p</span> <span class=o>=</span> <span class=n>strtok</span><span class=p>(</span><span class=k>nullptr</span><span class=p>,</span> <span class=n>d</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>a</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>p</span><span class=p>[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=n>b</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>p</span><span class=p>[</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>num1</span> <span class=o>=</span> <span class=n>b</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>-</span><span class=sc>&#39;0&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>num2</span> <span class=o>=</span> <span class=n>b</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=o>-</span><span class=sc>&#39;0&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>letter1</span> <span class=o>=</span> <span class=n>a</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>-</span><span class=mi>65</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>letter2</span> <span class=o>=</span> <span class=n>a</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=o>-</span><span class=mi>65</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>letter1</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=n>letter2</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=n>num1</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>num2</span><span class=p>;</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=k>const</span> <span class=kt>char</span> <span class=n>num</span> <span class=o>=</span> <span class=n>j</span><span class=o>+</span><span class=mi>48</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=kt>char</span> <span class=n>p</span><span class=p>[</span><span class=mi>80</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                <span class=n>p</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=n>letter</span><span class=p>[</span><span class=n>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>                <span class=n>p</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=n>num</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=n>list</span><span class=p>.</span><span class=n>insert</span><span class=p>(</span><span class=n>list</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>p</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>list</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=stl加持做法>STL加持做法</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>cellsInRange</span><span class=p>(</span><span class=n>string</span> <span class=n>s</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kt>char</span> <span class=n>a</span> <span class=o>=</span> <span class=n>s</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span> <span class=n>b</span> <span class=o>=</span> <span class=n>s</span><span class=p>[</span><span class=mi>3</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>p</span> <span class=o>=</span> <span class=n>s</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;0&#39;</span><span class=p>,</span> <span class=n>q</span> <span class=o>=</span> <span class=n>s</span><span class=p>[</span><span class=mi>4</span><span class=p>]</span> <span class=o>-</span> <span class=sc>&#39;0&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>ans</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kt>char</span> <span class=n>c</span> <span class=o>=</span> <span class=n>a</span><span class=p>;</span> <span class=n>c</span> <span class=o>&lt;=</span> <span class=n>b</span><span class=p>;</span> <span class=o>++</span><span class=n>c</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>d</span> <span class=o>=</span> <span class=n>p</span><span class=p>;</span> <span class=n>d</span> <span class=o>&lt;=</span> <span class=n>q</span><span class=p>;</span> <span class=o>++</span><span class=n>d</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>string</span> <span class=n>t</span><span class=p>{</span><span class=n>c</span><span class=p>,</span> <span class=p>(</span><span class=kt>char</span><span class=p>)(</span><span class=n>d</span> <span class=o>+</span> <span class=sc>&#39;0&#39;</span><span class=p>)};</span>
+</span></span><span class=line><span class=cl>                <span class=n>ans</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>t</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p>STL作用太大了，需要好好学学。</p><p>其实STL对于我们学习数据结构也是很有帮助的，以STL数据结构为参照，对应其中的功能来实现我们自己的类应该是一种更好的学法，毕竟我们学习数据结构不是为了在使用时造轮子而是更好地去驾驭已经比较完善的库中的它们，毕竟STL内的数据结构实现比我们要完善的多吧doge。</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/dp/>DP</a>
+</span><span><a href=/tags/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/>背包问题</a>
+</span><span><a href=/tags/leetcode/>LeetCode</a>
+</span><span><a href=/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%86%E5%88%86%E4%B8%8E%E6%8B%BC%E6%8E%A5/>字符串拆分与拼接</a></span></div><div class=post-info-line><div class=post-info-mod><span>更新于 2023-10-06&nbsp;<a class=git-hash href=https://github.com/khusika/FeelIt/commit/b6695f1766c416f671a3c8424f727908cefe6191 target=_blank title="committed&nbsp;by&nbsp;BreezEcho(l1477319644@163.com)&nbsp;b6695f1:&nbsp;rebuilding site date">
+<i class="fas fa-hashtag fa-fw"></i>b6695f1</a></span></div><div class=post-info-mod><span><a class=link-to-markdown href=/acdaily-6/index.md target=_blank>阅读原始文档</a>
+</span><span>&nbsp;|&nbsp;
+<a class=link-to-markdown href=https://github.com/khusika/FeelIt/edit/main/exampleSite/content/posts/ACDaily/ACDaily-6.md target=_blank>Improve Article</a></span></div></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://breezecho.github.io/acdaily-6/ data-title="ACDaily 6" data-hashtags=DP,背包问题,LeetCode,字符串拆分与拼接><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://breezecho.github.io/acdaily-6/ data-hashtag=DP><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://breezecho.github.io/acdaily-6/ data-title="ACDaily 6"><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://breezecho.github.io/acdaily-6/ data-title="ACDaily 6"><i class="fab fa-line fa-fw"></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://breezecho.github.io/acdaily-6/ data-title="ACDaily 6"><i class="fab fa-weibo fa-fw"></i></a></span></div></div><div class=post-nav><a href=/acdaily-5/ class=prev rel=prev title="ACDaily 5"><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+<a href=/acdaily-7/ class=next rel=next title="ACDaily 7">Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div></div><div id=comments class=single-card></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2021 - 2023</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>林知</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span><span class=icp-splitter>&nbsp;|&nbsp;</span><br class=icp-br><span class=icp>沪ICP备2022027236号-1</span></div></div><script>"serviceWorker"in navigator&&(navigator.serviceWorker.register("/sw.min.js?version=1.0.1",{scope:"/"}).then(()=>{console.info("林知的小窝\u00A0Service Worker Registered")},e=>console.error("林知的小窝\u00A0Service Worker registration failed: ",e)),navigator.serviceWorker.ready.then(()=>{console.info("林知的小窝\u00A0Service Worker Ready")}))</script></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-chevron-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment-alt fa-fw"></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.css><script src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js></script><script src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script src=/lib/lunr/lunr.stemmer.support.min.js></script><script src=/lib/lunr/lunr.zh.min.js></script><script src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script><script src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.1/sharer.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/mhchem.min.js></script><script>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>

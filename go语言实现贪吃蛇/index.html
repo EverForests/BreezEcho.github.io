@@ -1,0 +1,413 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Go语言实现贪吃蛇 - 林知的小窝</title><meta name=description content="林知的个人博客"><meta property="og:title" content="Go语言实现贪吃蛇"><meta property="og:description" content="摘要：贪吃蛇是我们从小玩到大的小游戏，本次实训以此为载体，将Go语言的基本语法与使用规范进行展示。同时在报告中也会对Go语言的独有特性进行介"><meta property="og:type" content="article"><meta property="og:url" content="https://breezecho.github.io/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/"><meta property="og:image" content="https://breezecho.github.io/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-02-18T01:35:51+08:00"><meta property="article:modified_time" content="2022-02-18T01:35:51+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://breezecho.github.io/logo.png"><meta name=twitter:title content="Go语言实现贪吃蛇"><meta name=twitter:description content="摘要：贪吃蛇是我们从小玩到大的小游戏，本次实训以此为载体，将Go语言的基本语法与使用规范进行展示。同时在报告中也会对Go语言的独有特性进行介"><meta name=application-name content="breezecho"><meta name=apple-mobile-web-app-title content="breezecho"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=/images/avatar.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://breezecho.github.io/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/><link rel=prev href=https://breezecho.github.io/theme-documentation-basics/><link rel=next href=https://breezecho.github.io/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Go语言实现贪吃蛇","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/breezecho.github.io\/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87\/"},"image":[{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/Apple-Devices-Preview.webp","width":1129,"height":614}],"genre":"posts","keywords":"Go","wordcount":3829,"url":"https:\/\/breezecho.github.io\/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87\/","datePublished":"2022-02-18T01:35:51+08:00","dateModified":"2022-02-18T01:35:51+08:00","license":"This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher":{"@type":"Organization","name":"xxxx","logo":{"@type":"ImageObject","url":"https:\/\/breezecho.github.io\/images\/avatar.webp","width":300,"height":300}},"author":{"@type":"Person","name":"林知"},"description":""}</script></head><body data-header-desktop=fixed data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>所有文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/categories/documentation/>文档 </a><a class=menu-item href=/about/>关于 </a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i> </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=# class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=林知的小窝><span class=header-title-pre><i class='fas fa-seedling fa-fw'></i></span>林知的小窝</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=# class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=# class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>所有文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/categories/documentation/ title>文档</a><a class=menu-item href=/about/ title>关于</a><a class=menu-item href=https://github.com/BreezEcho title=GitHub rel="noopener noreffer" target=_blank><i class='fab fa-github fa-fw'></i></a><div class=menu-item><a href=javascript:void(0); class=theme-switch title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single" data-toc=enable><div class=single-card><h2 class="single-title animated flipInX">Go语言实现贪吃蛇</h2><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw"></i>林知</a></span>&nbsp;<span class=post-category>出版于 <a href=/categories/go-project/><i class="far fa-folder fa-fw"></i>Go Project</a></span></div><div class=post-meta-line><span><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2022-02-18>2022-02-18</time></span>&nbsp;<span><i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3829 字</span>&nbsp;
+<span><i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟</span>&nbsp;</div></div><hr><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents></nav></div></div><div class=content id=content><blockquote><p>摘要：贪吃蛇是我们从小玩到大的小游戏，本次实训以此为载体，将Go语言的基本语法与使用规范进行展示。同时在报告中也会对Go语言的独有特性进行介绍。</p></blockquote><p><strong>一.项目分析</strong></p><p>(一)贪吃蛇玩法：</p><p>在一定区域内通过上下左右方向键控制蛇的方向，寻找食物，吃到食物后获得积分，并且蛇的身子变长，蛇不能碰墙与自己的身体。</p><p>(二)项目模块分析：</p><p>1.蛇模块</p><p>Ø 初始化蛇（出生）</p><p>Ø 蛇移动</p><p>Ø 碰撞食物，长度改变</p><p>Ø 碰撞墙或自己，蛇死亡</p><p>2.食物模块</p><p>Ø 食物产生</p><p>Ø 食物消失</p><p>3.游戏控制</p><p>Ø 控制键盘输入</p><p>Ø 游戏流程</p><p>4.游戏显示</p><p>Ø 游戏地图显示</p><p><strong>（三）流程初定</strong></p><p>基于以上的项目模块分析，我们可以初步确定项目实现的基本流程，在之后的每一步再不断优化下一步的处理。具体的流程如下：构建地图、食物类、蛇类 -> 图形显示器 -> 初始化地图信息 -> 初始化蛇信息 -> 设计食物随机产生器-> 设计游戏逻辑 -> 设计主程序。</p><p><strong>二.项目的实现</strong></p><p>文件结构：</p><p>$GOPATH: src\she.go</p><p>$GOROOT: src\Clib\Clib.go</p><p><strong>（一）地图、蛇类、食物类的构造</strong></p><p>1.地图设置</p><p>作为一个合理的贪吃蛇游戏，同时考虑我们的贪吃蛇小游戏是在命令行中实现的。因此我们考虑全局声明地图的长和高，且将它们初始化为20。这样我们就可以在main包中的任意位置合理地调用它们。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=nx>Package</span> <span class=nx>main</span>
+</span></span><span class=line><span class=cl><span class=nx>Import</span> <span class=err>…</span> 
+</span></span><span class=line><span class=cl><span class=kd>const</span> <span class=nx>WIDE</span> <span class=kt>int</span> <span class=p>=</span> <span class=mi>20</span>  <span class=c1>// 设置布局
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>const</span> <span class=nx>HIGH</span> <span class=kt>int</span> <span class=p>=</span> <span class=mi>20</span>
+</span></span></code></pre></td></tr></table></div></div><p>2.蛇类与食物类设置</p><p>作为一款贪吃蛇小游戏，主角当然是我们的小蛇。小蛇有它的长度size，有运动方向dir（小蛇是有头有尾的）。那么，要将小蛇的长度与方向这两个外部显示属性进行修改并显示，就需要引入一个能够对小蛇位置进行控制的数据结构——数组。这个数组中存放着小蛇每一节的位置坐标，考虑到小蛇的运动自由性，我们可以将数组的容量设置为地图的大小即20*20 = 400。</p><p>作为贪吃蛇小游戏的次角——食物就没有那么多的信息，不过在后期可以对它的ui进行一个美化。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>type</span> <span class=nx>Snake</span> <span class=kd>struct</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>size</span> <span class=kt>int</span>
+</span></span><span class=line><span class=cl>    <span class=nx>dir</span> <span class=kt>byte</span>
+</span></span><span class=line><span class=cl>    <span class=nx>pos</span> <span class=p>[</span><span class=nx>WIDE</span><span class=o>*</span><span class=nx>HIGH</span><span class=p>]</span><span class=nx>Position</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>type</span> <span class=nx>Food</span> <span class=kd>struct</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Position</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>（二）设计图形显示器</strong></p><p>定义好以上静态信息，如果不对它们进行外部显示，便失去了意义。考虑到我们最终设计出来的小蛇与食物的位置是在不断变化的，但每一次变化的位置可以用光标来控制，因此我们考虑用cgo即c与go语言进行混合编程来实现这一功能，因为c语言标准库中有简单的函数来实现命令行光标的移动。我们要做的仅仅是做一个接口，使得在Go中也能调用的这些c函数。</p><p>首先，我们需要自行构建一个包，在这里我们命名为Clib。在GoRoot目录的src文件下新建一个文件夹并命名为Clib，然后在它的内部创建一个Go文件，写入以下信息：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span> <span class=nx>Clib</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/*
+</span></span></span><span class=line><span class=cl><span class=cm>#include &lt;windows.h&gt;
+</span></span></span><span class=line><span class=cl><span class=cm>#include &lt;conio.h&gt;
+</span></span></span><span class=line><span class=cl><span class=cm>
+</span></span></span><span class=line><span class=cl><span class=cm>// 使用了WinAPI来移动控制台的光标
+</span></span></span><span class=line><span class=cl><span class=cm>void gotoxy(int x, int y)
+</span></span></span><span class=line><span class=cl><span class=cm>{
+</span></span></span><span class=line><span class=cl><span class=cm>    COORD c;
+</span></span></span><span class=line><span class=cl><span class=cm>    c.X = x, c.Y = y;
+</span></span></span><span class=line><span class=cl><span class=cm>    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+</span></span></span><span class=line><span class=cl><span class=cm>}
+</span></span></span><span class=line><span class=cl><span class=cm>
+</span></span></span><span class=line><span class=cl><span class=cm>// 从键盘获取一次按键，但不显示到控制台
+</span></span></span><span class=line><span class=cl><span class=cm>int direct()
+</span></span></span><span class=line><span class=cl><span class=cm>{
+</span></span></span><span class=line><span class=cl><span class=cm>    return _getch();
+</span></span></span><span class=line><span class=cl><span class=cm>}
+</span></span></span><span class=line><span class=cl><span class=cm>//去掉控制台光标
+</span></span></span><span class=line><span class=cl><span class=cm>void hideCursor()
+</span></span></span><span class=line><span class=cl><span class=cm>{
+</span></span></span><span class=line><span class=cl><span class=cm>    CONSOLE_CURSOR_INFO  cci;
+</span></span></span><span class=line><span class=cl><span class=cm>    cci.bVisible = FALSE;
+</span></span></span><span class=line><span class=cl><span class=cm>    cci.dwSize = sizeof(cci);
+</span></span></span><span class=line><span class=cl><span class=cm>    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &amp;cci);
+</span></span></span><span class=line><span class=cl><span class=cm>}
+</span></span></span><span class=line><span class=cl><span class=cm>*/</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;C&#34;</span>
+</span></span><span class=line><span class=cl><span class=c1>//设置控制台光标位置
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>func</span> <span class=nf>GotoPosition</span><span class=p>(</span><span class=nx>X</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>Y</span> <span class=kt>int</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//调用C语言函数
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>C</span><span class=p>.</span><span class=nf>gotoxy</span><span class=p>(</span><span class=nx>C</span><span class=p>.</span><span class=nb>int</span><span class=p>(</span><span class=nx>X</span><span class=p>),</span> <span class=nx>C</span><span class=p>.</span><span class=nb>int</span><span class=p>(</span><span class=nx>Y</span><span class=p>))</span>  <span class=c1>// go类型转换
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//无显获取键盘输入的字符
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>func</span> <span class=nf>Direction</span><span class=p>()</span> <span class=p>(</span><span class=nx>key</span> <span class=kt>int</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>key</span> <span class=p>=</span> <span class=nb>int</span><span class=p>(</span><span class=nx>C</span><span class=p>.</span><span class=nf>direct</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//设置控制台光标隐藏
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>func</span> <span class=nf>HideCursor</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>C</span><span class=p>.</span><span class=nf>hideCursor</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>注意包头要注明package Clib，之后在Clib文件夹中新建的Go文件也是如此，这类似于一个归属标识，不可缺少。</p><p>/<em>与</em>/包裹的部分是C语言，也是Go中可以调用的函数的一个本源映射， 标准的头文件引入与函数定义都是需要的，与C中语法相同。一个要注意的点是import “C”与上面的C语言引用说明间是不能有空行的，否则在之后的主文件包调用中会报错；还有Go函数的名称一定要大写，这与后期调用有密切关系。通过以上两点我们可以看到Go语言对格式的高规范、高要求。</p><p>设计好我们需要的包后，就需要在主文件中调用采用使用其中的函数。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>import</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;Clib&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;fmt&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;math/rand&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;os&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=s>&#34;time&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>回到正题，我们需要将命令行光标移动到蛇与食物的每个位置来设置它们的ui，因此我们在这里用的是用C设计的gotoxy函数与Go设计的GotoPosition函数。在主文件中，我们定义函数showUI，接口设置为目标（蛇或食物）的位置坐标与需要设置的ui图形。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>ShowUI</span><span class=p>(</span><span class=nx>X</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>Y</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>ui</span> <span class=kt>byte</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 找到对应坐标点光标位置
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>Clib</span><span class=p>.</span><span class=nf>GotoPosition</span><span class=p>(</span><span class=nx>X</span><span class=o>*</span><span class=mi>2</span><span class=o>+</span><span class=mi>2</span><span class=p>,</span><span class=nx>Y</span><span class=o>+</span><span class=mi>2</span><span class=p>)</span>  <span class=c1>// 避免蛇移动影响棋盘边界
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>// 绘制图形
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Fprintf</span><span class=p>(</span><span class=nx>os</span><span class=p>.</span><span class=nx>Stderr</span><span class=p>,</span> <span class=s>&#34;%c&#34;</span><span class=p>,</span> <span class=nx>ui</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>(三)初始化地图信息</p><p>地图的初始化是简单的，我们仅需将一个方框打印出来，由于篇幅有限这里只做出来它的简化图：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>MapInit</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Fprintln</span><span class=p>(</span><span class=nx>os</span><span class=p>.</span><span class=nx>Stderr</span><span class=p>,</span><span class=s>`
+</span></span></span><span class=line><span class=cl><span class=s>    #------#
+</span></span></span><span class=line><span class=cl><span class=s>    |       |
+</span></span></span><span class=line><span class=cl><span class=s>    |       |
+</span></span></span><span class=line><span class=cl><span class=s>    #------#
+</span></span></span><span class=line><span class=cl><span class=s>    `</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>可以想象一下，实际上水平方向有40个“-”，竖直方向有20个“|”。</p><p>这里采用了一个特殊函数Fprintln，对比ShowUI中的Fprintf，我们可以看到其中的相似与差别:</p><table><thead><tr><th>Fprintf</th><th>Fprintf 根据 format 参数生成格式化的字符串并写入 w 。返回写入的字节数和遇到的任何错误。</th></tr></thead><tbody><tr><td>Fprintln</td><td>Fprintln 采用默认格式将其参数格式化并写入 w 。总是会在相邻参数的输出之间添加空格并在输出结束后添加换行符。返回写入的字节数和遇到的任何错误。</td></tr></tbody></table><p>**(**<strong>四)初始化蛇信息</strong></p><p>1.初始化蛇的长度、方向与位置，并绘制初始形态</p><p>通常，贪吃蛇的开端是地图的中心，长度为2（包括一头一尾），并且头朝右，尾与头在一条水平面上，我们的游戏也是如此。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=nx>s</span><span class=p>.</span><span class=nx>size</span> <span class=p>=</span> <span class=mi>2</span>  <span class=c1>// 一头一尾
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>s</span><span class=p>.</span><span class=nx>dir</span> <span class=p>=</span> <span class=sc>&#39;R&#39;</span>  <span class=c1>//初始化方向 用UDLR做上下左右
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>X</span> <span class=p>=</span> <span class=nx>WIDE</span><span class=o>/</span><span class=mi>2</span>
+</span></span><span class=line><span class=cl>    <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>Y</span> <span class=p>=</span> <span class=nx>HIGH</span><span class=o>/</span><span class=mi>2</span>
+</span></span><span class=line><span class=cl>    <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>1</span><span class=p>].</span><span class=nx>X</span> <span class=p>=</span> <span class=nx>WIDE</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>1</span><span class=p>].</span><span class=nx>Y</span> <span class=p>=</span> <span class=nx>HIGH</span><span class=o>/</span><span class=mi>2</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>ui</span> <span class=kt>byte</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=nx>i</span> <span class=o>==</span> <span class=mi>0</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ui</span> <span class=p>=</span> <span class=sc>&#39;@&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span> <span class=k>else</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ui</span> <span class=p>=</span> <span class=sc>&#39;*&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=nf>ShowUI</span><span class=p>(</span><span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>X</span><span class=p>,</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>Y</span><span class=p>,</span> <span class=nx>ui</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>2.设置蛇方向的调整方式</p><p>考虑到玩家在游戏中唯一的操作就是不断改变蛇的移动方向，那么我们就需要建立按键与方向之间的联系。在本模块的设计中需要查找ASCII码与字符间的对应关系。“WSAD”是我们玩游戏时常用的按键，因此我们将它们与方向“上下左右”建立关系，但有时候用户可能会忽视它们的键盘大写设置，或者因外界因素导致某些键位损坏，因此我们也将”wsad”与”udrl”加入了设计。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=k>go</span> <span class=kd>func</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>switch</span> <span class=nx>Clib</span><span class=p>.</span><span class=nf>Direction</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=c1>//方向上  W|w|↑
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=k>case</span> <span class=mi>83</span><span class=p>,</span> <span class=mi>115</span><span class=p>,</span> <span class=mi>80</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=nx>s</span><span class=p>.</span><span class=nx>dir</span> <span class=p>=</span> <span class=sc>&#39;U&#39;</span>
+</span></span><span class=line><span class=cl>                <span class=c1>//方向左
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=k>case</span> <span class=mi>65</span><span class=p>,</span> <span class=mi>97</span><span class=p>,</span> <span class=mi>75</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=nx>s</span><span class=p>.</span><span class=nx>dir</span> <span class=p>=</span> <span class=sc>&#39;L&#39;</span>
+</span></span><span class=line><span class=cl>                <span class=c1>//方向右
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=k>case</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>68</span><span class=p>,</span> <span class=mi>77</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=nx>s</span><span class=p>.</span><span class=nx>dir</span> <span class=p>=</span> <span class=sc>&#39;R&#39;</span>
+</span></span><span class=line><span class=cl>                <span class=c1>//方向下
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=k>case</span> <span class=mi>72</span><span class=p>,</span> <span class=mi>87</span><span class=p>,</span> <span class=mi>119</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=nx>s</span><span class=p>.</span><span class=nx>dir</span> <span class=p>=</span> <span class=sc>&#39;D&#39;</span>
+</span></span><span class=line><span class=cl>                <span class=c1>//暂停  空格键
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=k>case</span> <span class=mi>32</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=nx>s</span><span class=p>.</span><span class=nx>dir</span> <span class=p>=</span> <span class=sc>&#39;P&#39;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}()</span>  <span class=c1>// 特殊的独立函数
+</span></span></span></code></pre></td></tr></table></div></div><p>这是一个特殊的函数，它独立于main，在程序运行过程中始终保持生效状态。</p><p><strong>（五）设计食物随机产生器</strong></p><p>由于贪吃蛇中的食物是随机产生的，我们需要赋予食物的位置一个随机性。但Go的rand包在边界范围内产生的随机种子不是随机的，因此我们需要在main中加入混淆种子来实现随机性。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>RandomFood</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>    <span class=nx>food</span><span class=p>.</span><span class=nx>X</span> <span class=p>=</span> <span class=nx>rand</span><span class=p>.</span><span class=nf>Intn</span><span class=p>(</span><span class=nx>WIDE</span><span class=p>)</span><span class=o>+</span><span class=mi>1</span>  <span class=c1>// 直接写起不到随机的效果,这是go的一个缺点
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>food</span><span class=p>.</span><span class=nx>Y</span> <span class=p>=</span> <span class=nx>rand</span><span class=p>.</span><span class=nf>Intn</span><span class=p>(</span><span class=nx>HIGH</span><span class=p>)</span><span class=o>+</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=nf>ShowUI</span><span class=p>(</span><span class=nx>food</span><span class=p>.</span><span class=nx>X</span><span class=p>,</span> <span class=nx>food</span><span class=p>.</span><span class=nx>Y</span><span class=p>,</span> <span class=sc>&#39;s&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 设置一个随机种子，用作混淆
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>rand</span><span class=p>.</span><span class=nf>Seed</span><span class=p>(</span><span class=nx>time</span><span class=p>.</span><span class=nf>Now</span><span class=p>().</span><span class=nf>UnixNano</span><span class=p>())</span>
+</span></span></code></pre></td></tr></table></div></div><p>注意函数定义在main外，混淆种子定义在main内。</p><p><strong>（六）设置游戏逻辑</strong></p><p>在游戏开始时，我们就可以对贪吃蛇的方向进行调整，我们在之前已经对键位与贪吃蛇移动方向进行了联系，接下来我们来实现它的动态效果：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>var</span> <span class=nx>nx</span><span class=p>,</span> <span class=nx>ny</span> <span class=kt>int</span> <span class=p>=</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>switch</span> <span class=nx>s</span><span class=p>.</span><span class=nx>dir</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>case</span> <span class=sc>&#39;U&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nx>nx</span> <span class=p>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ny</span> <span class=p>=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=k>case</span> <span class=sc>&#39;D&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nx>nx</span> <span class=p>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ny</span> <span class=p>=</span> <span class=o>-</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=k>case</span> <span class=sc>&#39;L&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nx>nx</span> <span class=p>=</span> <span class=o>-</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ny</span> <span class=p>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>        <span class=k>case</span> <span class=sc>&#39;R&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nx>nx</span> <span class=p>=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>            <span class=nx>ny</span> <span class=p>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这一部分包含在一个永真循环中，每一次循环，蛇的方向可能都不一样，不同的方向会对应蛇头的位移，紧接着链式反应到蛇身。</p><p>众所周知，贪吃蛇有两种死亡方式，那就是头撞墙或撞到自己的身体，在这里我们可以用使用位置信息来进行判断：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=c1>// 蛇头和墙体碰撞判断
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>if</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>X</span> <span class=p>&lt;</span> <span class=mi>1</span> <span class=o>||</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>Y</span> <span class=p>&lt;</span> <span class=mi>1</span> <span class=o>||</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>X</span> <span class=o>&gt;=</span> <span class=nx>WIDE</span><span class=o>+</span><span class=mi>1</span> <span class=o>||</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>Y</span> <span class=o>&gt;=</span> <span class=nx>HIGH</span><span class=o>+</span><span class=mi>1</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 蛇头和身体判断
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>1</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>X</span> <span class=o>==</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>X</span> <span class=o>&amp;&amp;</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>Y</span> <span class=o>==</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>Y</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=k>return</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 蛇跟食物判断
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>if</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>X</span> <span class=o>==</span> <span class=nx>food</span><span class=p>.</span><span class=nx>X</span> <span class=o>&amp;&amp;</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>Y</span> <span class=o>==</span> <span class=nx>food</span><span class=p>.</span><span class=nx>Y</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 身体增长
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=o>++</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 刷新食物位置
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=nf>RandomFood</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>            <span class=c1>// 分数变量
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>在贪吃蛇世界中，有且仅会发生以上三种碰撞。当贪吃蛇吃到食物，它的各项属性会发生相应的变化：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=c1>//获取蛇尾坐标,在之后隐去蛇尾
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>wx</span> <span class=o>:=</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=o>-</span><span class=mi>1</span><span class=p>].</span><span class=nx>X</span>
+</span></span><span class=line><span class=cl>        <span class=nx>wy</span> <span class=o>:=</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=o>-</span><span class=mi>1</span><span class=p>].</span><span class=nx>Y</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// 从尾部开始更新蛇的身体坐标
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=o>-</span><span class=mi>1</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&gt;</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span><span class=o>--</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>X</span> <span class=p>=</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=o>-</span><span class=mi>1</span><span class=p>].</span><span class=nx>X</span>
+</span></span><span class=line><span class=cl>            <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>Y</span> <span class=p>=</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=o>-</span><span class=mi>1</span><span class=p>].</span><span class=nx>Y</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// 更新蛇头坐标
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>X</span> <span class=o>+=</span> <span class=nx>nx</span>
+</span></span><span class=line><span class=cl>        <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=nx>Y</span> <span class=o>+=</span> <span class=nx>ny</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>//绘制蛇
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>for</span> <span class=nx>i</span> <span class=o>:=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=p>&lt;</span> <span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=p>;</span> <span class=nx>i</span><span class=o>++</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=kd>var</span> <span class=nx>ui</span> <span class=kt>byte</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=nx>i</span> <span class=o>==</span> <span class=mi>0</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>ui</span> <span class=p>=</span> <span class=sc>&#39;@&#39;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span> <span class=k>else</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nx>ui</span> <span class=p>=</span> <span class=sc>&#39;*&#39;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=nf>ShowUI</span><span class=p>(</span><span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>X</span><span class=p>,</span> <span class=nx>s</span><span class=p>.</span><span class=nx>pos</span><span class=p>[</span><span class=nx>i</span><span class=p>].</span><span class=nx>Y</span><span class=p>,</span> <span class=nx>ui</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>// 重新绘制图形
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nf>ShowUI</span><span class=p>(</span><span class=nx>wx</span><span class=p>,</span> <span class=nx>wy</span><span class=p>,</span> <span class=sc>&#39; &#39;</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>这里要先更新蛇尾再更新蛇头，否则会导致异形蛇的产生。再更新完蛇的位置坐标后，会重新绘制蛇形。</p><p><strong>（七）设计主程序</strong></p><p>待所有的工具模块设计好后，我们就可以设计主程序的流程了。首先，我们初始化地图，然后有了地图，就利用随机种子生成食物，这一点我们在设计食物随机生成器提到过，还需要加入混淆种子来赋予随机性。之后，我们需要隐藏命令行光标，减小对游戏体验的影响，具体的，需要利用Clib包内的HideCursor函数。最后，就是对蛇的设计，首先我们初始化蛇，然后再将蛇置入游戏中。具体代码如下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 设置一个随机种子，用作混淆
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>rand</span><span class=p>.</span><span class=nf>Seed</span><span class=p>(</span><span class=nx>time</span><span class=p>.</span><span class=nf>Now</span><span class=p>().</span><span class=nf>UnixNano</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 隐藏光标
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nx>Clib</span><span class=p>.</span><span class=nf>HideCursor</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 初始化地图
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nf>MapInit</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 生成随机食物
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nf>RandomFood</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 绘制食物
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=c1>//ShowUI(food.X, food.Y, &#39;s&#39;)
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=kd>var</span> <span class=nx>s</span> <span class=nx>Snake</span>
+</span></span><span class=line><span class=cl>    <span class=nx>s</span><span class=p>.</span><span class=nf>SnakeInit</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nx>s</span><span class=p>.</span><span class=nf>PlayGame</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>三.项目总结</strong></p><p>本项目已上传至Github，欢迎体验与交流。</p><p>地址是：https://github.com/huansong-dev/GluttonousSnake-Go</p><p>以上就是本项目的全部后台设计。在未来，我们还可以为游戏加入更多模式，或增加难度，例如增加障碍、不断加快速度等等。</p><p>面向业务、面向需求，不断打磨、不断优化是每一个设计者都需要具有的能力。作为一名优秀的coder，需要匠心独运。</p><p><strong>四.参考文献</strong></p><p>[1] 【六星教育】G0语言综合实战贪吃蛇项目开发教学[EB/OL].[2021-04-27].https://www.bilibili.com/video/BV1tA411V7aH?p=4</p><p>[2]Golang实现贪吃蛇[EB/OL].[2018-08-12]. <a href=http://t.csdn.cn/XLYO3 target=_blank rel="noopener noreffer">http://t.csdn.cn/XLYO3</a></p><p>[3] Go语言文档[EB/OL].[2022-02-26]. <a href=https://go.dev/doc/ target=_blank rel="noopener noreffer">https://go.dev/doc/</a></p><p>[TOC]</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/go/>Go</a></span></div><div class=post-info-line><div class=post-info-mod><span>更新于 2022-02-18</span></div><div class=post-info-mod><span><a class=link-to-markdown href=/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/index.md target=_blank>阅读原始文档</a>
+</span><span>&nbsp;|&nbsp;
+<a class=link-to-markdown href=https://github.com/khusika/FeelIt/edit/main/exampleSite/content/posts/Project/Go%e8%af%ad%e8%a8%80%e5%ae%9e%e7%8e%b0%e8%b4%aa%e5%90%83%e8%9b%87.md target=_blank>Improve Article</a></span></div></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://breezecho.github.io/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/ data-title=Go语言实现贪吃蛇 data-hashtags=Go><i class="fab fa-twitter fa-fw"></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://breezecho.github.io/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/ data-hashtag=Go><i class="fab fa-facebook-square fa-fw"></i></a><a href=javascript:void(0); title="分享到 Hacker News" data-sharer=hackernews data-url=https://breezecho.github.io/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/ data-title=Go语言实现贪吃蛇><i class="fab fa-hacker-news fa-fw"></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://breezecho.github.io/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/ data-title=Go语言实现贪吃蛇><i class="fab fa-line fa-fw"></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://breezecho.github.io/go%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E8%B4%AA%E5%90%83%E8%9B%87/ data-title=Go语言实现贪吃蛇><i class="fab fa-weibo fa-fw"></i></a></span></div></div><div class=post-nav><a href=/theme-documentation-basics/ class=prev rel=prev title=博客主题概念文档><i class="fas fa-angle-left fa-fw"></i>Previous Post</a>
+<a href=/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/ class=next rel=next title=双指针、BFS和图论>Next Post<i class="fas fa-angle-right fa-fw"></i></a></div></div></div><div id=comments class=single-card></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>由 <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.1"><i class="fas fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2021 - 2023</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>林知</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span><span class=icp-splitter>&nbsp;|&nbsp;</span><br class=icp-br><span class=icp>沪ICP备2022027236号-1</span></div></div><script>"serviceWorker"in navigator&&(navigator.serviceWorker.register("/sw.min.js?version=1.0.1",{scope:"/"}).then(()=>{console.info("林知的小窝\u00A0Service Worker Registered")},e=>console.error("林知的小窝\u00A0Service Worker registration failed: ",e)),navigator.serviceWorker.ready.then(()=>{console.info("林知的小窝\u00A0Service Worker Ready")}))</script></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-chevron-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment-alt fa-fw"></i></a></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.css><script src=https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.0/dist/autocomplete.min.js></script><script src=https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js></script><script src=/lib/lunr/lunr.stemmer.support.min.js></script><script src=/lib/lunr/lunr.zh.min.js></script><script src=https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js></script><script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js></script><script src=https://cdn.jsdelivr.net/npm/sharer.js@0.4.1/sharer.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/copy-tex.min.js></script><script src=https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/mhchem.min.js></script><script>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>
