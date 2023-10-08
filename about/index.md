@@ -15,7 +15,7 @@
 
   <br/>
 
-- SHUer，CS爱好者，to be a FDUer.
+- SHUer，CS爱好者。
 
   <br/>
 
