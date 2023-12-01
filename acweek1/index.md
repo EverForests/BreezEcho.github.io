@@ -166,4 +166,130 @@ int main()
 }
 ```
 
+### 3 高精度
+
+#### 3.1 高精度加法
+
+原题链接
+
+**基本思路：**
+
+1. 对大长度数据使用向量逆序存储。
+2. 逆向思考，注意最终结果每一位是由哪些部分组成的，包含上一位的进位、两数对应位的和。
+3. 注意向量vector这一数据结构的特性，它是动态数组，需要避免访问越界问题。
+
+**代码：**
+
+```C++
+#include <iostream>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+vector<int> a, b;
+
+void add(vector<int> a, vector<int> b) {
+    vector<int> c;
+    int t = 0;
+    for (int i = 0; i < a.size(); i++) {
+        t += a[i];
+        if (i < b.size()) t += b[i];
+        c.push_back(t%10);
+        t /= 10;
+    }
+    
+    if (t) c.push_back(t);
+    
+    for (int i = c.size()-1; i >= 0; i--) cout << c[i];
+}
+
+int main()
+{
+    string s1, s2;
+    cin >> s1 >> s2;
+    
+    int n1 = s1.length(), n2 = s2.length();
+    for (int i = n1-1; i >= 0; i--) a.push_back(s1[i]-'0');
+    for (int i = n2-1; i >= 0; i--) b.push_back(s2[i]-'0');
+    
+    if (n1 >= n2) add(a, b);
+    else add(b, a);
+    
+    return 0;
+}
+```
+
+> 先关注思路和逻辑，再想想哪些地方可以优化。
+
+#### 3.2 高精度减法
+
+原题链接
+
+**基本思路：**
+
+- 与高精度加采取的数据结构一致，只是操作规则不同
+- 先判断两数的大小关系，再做相减，某种情况下加上负号
+
+**代码：**
+
+```c++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+bool cmp(vector<int> &A, vector<int> &B) 比较两数大小，从位数、各位数大小分析
+{
+    if (A.size() != B.size()) return A.size() > B.size();
+
+    for (int i = A.size() - 1; i >= 0; i -- )
+        if (A[i] != B[i])
+            return A[i] > B[i];
+
+    return true;
+}
+
+
+vector<int> sub(vector<int> &A, vector<int> &B)  两数相减
+{
+    vector<int> C;
+    int t = 0;
+    for(int i = 0; i < A.size(); i++)
+    {
+        t = A[i] - t;
+        if(i < B.size()) t -= B[i];
+        C.push_back((t + 10) % 10);
+        if(t < 0) t = 1;
+        else t = 0;
+    }
+    while(C.size() > 1 && C.back() == 0) C.pop_back();  考虑减完后高位为0的情况
+    return C;
+}
+
+int main()
+{
+    string a, b;
+    cin >> a >> b;
+    vector<int> A, B, C;
+    for(int i = a.size() - 1; i >= 0; i--) A.push_back(a[i] - '0');
+    for(int i = b.size() - 1; i >= 0; i--) B.push_back(b[i] - '0');
+    if(cmp(A, B)) C = sub(A, B);
+    else 
+    {
+        C = sub(B, A);
+        cout << '-';
+    }
+    for(int i = C.size() - 1; i >= 0; i--) cout << C[i];
+    return 0;
+}
+```
+
+**拓展：**
+
+- 注意去掉计算过程中产生的前导零
+- 可以对代码做进一步优化
+
 
