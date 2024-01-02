@@ -920,11 +920,11 @@ int main()
 
 大框架：
 
-![截屏2023-12-27 16.46.09](assets/截屏2023-12-27 16.46.09-20231227164724-8v9736g.png)
+![p1](https://github.com/BreezEcho/PicGo/assets/112888355/be5dea68-f6b8-452d-bd1c-f077c9fc73bf)
 
 两个判断的思路：
 
-![截屏2023-12-27 16.42.06](assets/截屏2023-12-27 16.42.06-20231227164700-nartsi8.png)
+![p2](https://github.com/BreezEcho/PicGo/assets/112888355/e5a7ccfb-30bb-4c17-a02a-8dbce1e68686)
 
 ```c++
 #include <iostream>
@@ -997,7 +997,7 @@ int main()
 
 然后基于上述两个底层函数，我们可以实现堆的各种维护操作：
 
-![截屏2024-01-02 14.50.00](assets/截屏2024-01-02 14.50.00-20240102145006-fi940h7.png)
+![p3](https://github.com/BreezEcho/PicGo/assets/112888355/f254b7b1-cbbf-45cb-9707-c498d7730bc4)
 
 实现：
 
@@ -1050,7 +1050,7 @@ int main()
 
 > swap函数具体拓展了什么？
 >
-> ![截屏2024-01-02 14.59.13](assets/截屏2024-01-02%2014.59.13-20240102145919-315bdaw.png)
+> <img src="https://github.com/BreezEcho/PicGo/assets/112888355/96d51586-1948-488c-8046-aa2196a35a9c" alt="p4" style="zoom: 33%;" />
 
 我们拓展一下swap的功能就好了，注意实现过程中的各种问题：
 
@@ -1255,7 +1255,7 @@ int main()
 
 实现：
 
-![截屏2024-01-02 16.39.12](assets/截屏2024-01-02%2016.39.12-20240102163919-oaez6hk.png)
+![p5](https://github.com/BreezEcho/PicGo/assets/112888355/efc95ca2-3d7b-4542-868e-fd7584544fc5)
 
 ```c++
 #include <iostream>
